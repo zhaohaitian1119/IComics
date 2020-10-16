@@ -8,4 +8,5 @@ import java.util.List;
 public interface MessageServicecx {
     List<Information> selectAll(int pageIndex, int pageSize);
     int del(int id);
+    List<Information> selByUserName(String username);
 }

@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -40,7 +41,7 @@
 
         function deleteComment(id) {
             if(confirm('确实要删除该评论吗?')) {
-                location.href="/static/deleteComment?id="+id;
+                location.href="/deleteComment?id="+id;
             }
         }
     </script>
@@ -50,7 +51,7 @@
 <div class="panel panel-default">
     <!-- 搜索部分 -->
     <div class="panel-body">
-        <form class="form-inline" method="get" action="/static/commentListByComicId">
+        <form class="form-inline" method="get" action="/commentListByComicId">
             <div class="form-group">
                 <label for="">漫画id</label>
                 <input type="text" class="form-control" id=""  name="comicid">
@@ -77,7 +78,9 @@
             <td>${user.userid }</td>
             <td>${user.newsid}</td>
             <td>${user.comments }</td>
-            <td>${user.commenttime}</td>
+            <td>
+            <fmt:formatDate value="${user.commenttime}" pattern="yyyy-MM-dd"></fmt:formatDate>
+            </td>
             <td>
                 <a href="#" class="btn btn-danger btn-xs" onclick="deleteComment(${user.id})">删除</a>
             </td>
@@ -88,11 +91,11 @@
 <div class="col-md-12 text-right">
     <nav>
         <ul class="pagination">
-            <li ><a href="/static/commentList?pn=1">首页 </a></li>
-            <li ><a href="/static/commentList?pn=${commentList.pageNum-1}">上一页 </a></li>
+            <li ><a href="/commentList?pn=1">首页 </a></li>
+            <li ><a href="/commentList?pn=${commentList.pageNum-1}">上一页 </a></li>
             <li><a href="#">${commentList.pageNum}</a></li>
-            <li ><a href="/static/commentList?pn=${commentList.pageNum+1}">下一页</a></li>
-            <li ><a href="/static/commentList?pn=${commentList.pages}">尾页</a></li>
+            <li ><a href="/commentList?pn=${commentList.pageNum+1}">下一页</a></li>
+            <li ><a href="/commentList?pn=${commentList.pages}">尾页</a></li>
         </ul>
     </nav>
 </div>

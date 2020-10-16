@@ -17,7 +17,7 @@ public class CommentController {
     @Resource
     CommentListServicecx commentListServicecx;
 
-    @RequestMapping("/static/commentList")
+    @RequestMapping("/commentList")
     public String commentList(Model model, HttpServletRequest request){
         int Num=1;
         String pn=request.getParameter("pn");
@@ -34,7 +34,7 @@ public class CommentController {
     }
 
     //根据漫画id查询
-    @RequestMapping("/static/commentListByComicId")
+    @RequestMapping("/commentListByComicId")
     public String commentListByComicId(Integer comicid,Model model, HttpServletRequest request){
         int Num=1;
         String pn=request.getParameter("pn");
@@ -50,9 +50,9 @@ public class CommentController {
         return "admin/commentList";
     }
 
-    @RequestMapping("/static/deleteComment")
+    @RequestMapping("/deleteComment")
     public String deleteComment(int id){
         int del = commentListServicecx.del(id);
-        return "redirect:/static/commentList";
+        return "redirect:/commentList";
     }
 }
