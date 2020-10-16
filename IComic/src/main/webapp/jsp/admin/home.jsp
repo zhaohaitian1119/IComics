@@ -24,7 +24,7 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-8 col-md-4 item">
-            <a href="/static/userList" class="thumbnail">
+            <a href="/userList" class="thumbnail">
                 <h2 class="title">${countUser}
                     <span class="glyphicon glyphicon-user right" aria-hidden="true"></span>
                 </h2>
@@ -40,7 +40,7 @@
             </a>
         </div>
         <div class="col-xs-8 col-md-4 item">
-            <a href="/static/getComics" class="thumbnail">
+            <a href="/getComics" class="thumbnail">
                 <h2 class="title">${countComic}
                     <span class="glyphicon glyphicon-star-empty right" aria-hidden="true"></span>
                 </h2>
@@ -51,7 +51,7 @@
         </div>
 
         <div class="col-xs-8 col-md-4 item">
-            <a href="/static/commentList" class="thumbnail">
+            <a href="/commentList" class="thumbnail">
                 <h2 class="title">${countComment}
                     <span class="glyphicon glyphicon-hd-video right" aria-hidden="true"></span>
                 </h2>
@@ -61,7 +61,7 @@
             </a>
         </div>
         <div class="col-xs-8 col-md-4 item">
-            <a href="/static/messageList" class="thumbnail">
+            <a href="/messageList" class="thumbnail">
                 <h2 class="title">${countMessage}
                     <span class="glyphicon glyphicon-check right" aria-hidden="true"></span>
                 </h2>
@@ -71,7 +71,7 @@
             </a>
         </div>
         <div class="col-xs-8 col-md-4 item">
-            <a href="/static/closeList" class="thumbnail">
+            <a href="/closeList" class="thumbnail">
                 <h2 class="title">${countClose}
                     <span class="glyphicon glyphicon-remove-sign right" aria-hidden="true"></span>
                 </h2>

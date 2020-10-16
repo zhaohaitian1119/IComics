@@ -28,4 +28,8 @@ public interface ComicMapper {
     int updateByPrimaryKeySelective(Comic record);
 
     int updateByPrimaryKey(Comic record);
+
+    int getHeats();
+
+    List<Comic> getComicSByOther(Comic comic);
 }

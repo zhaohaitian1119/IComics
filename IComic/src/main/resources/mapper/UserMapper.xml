@@ -288,4 +288,7 @@
       userstatus = #{userstatus,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="getCloseUsers" resultType="com.gruop.cmoic.pojo.User">
+    select * from user where userstatus=0 order by id
+  </select>
 </mapper>
