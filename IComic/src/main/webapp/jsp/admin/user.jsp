@@ -7,13 +7,14 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Title</title>    
-    <link rel="shortcut icon"	href="/pic/userPath/1.png">
+    <title>Title</title>
+    <link rel="shortcut icon" href="/pic/userPath/1.png">
     <link rel="stylesheet" href="/static/css/bootstrap.css">
     <script src="/static/js/jquery-3.4.1.js"></script>
     <script src="/static/js/bootstrap.js"></script>
@@ -24,20 +25,25 @@
 <div class="panel panel-default">
     <!-- 搜索部分 -->
     <div class="panel-body">
-        <form class="form-inline" method="get" action="/static/getUserByOther">
+        <form class="form-inline" method="get" action="/toAmdinUser">
             <div class="form-group">
                 <label for="loginName">用户名</label>
-                <input type="text" class="form-control" id="loginName" name="username">
+                <input type="text" value="${username}" class="form-control" id="loginName" name="username">
             </div>
             <div class="form-group">
                 <label for="">用户账号</label>
-                <input type="text" class="form-control" id="" value="" name="loginname">
+                <input type="text" class="form-control" id="" value="${loginname}" name="loginname">
             </div>
             <div class="form-group">
                 <label for="playgender">性别</label>
                 <select class="form-control" id="playgender" name="gender">
-                    <option value="男">男</option>
-                    <option value="女">女</option>
+                    <option value="">请选择</option>
+                    <option value="男"
+                            <c:if test="${gender=='男'}">selected</c:if> >男
+                    </option>
+                    <option value="女"
+                            <c:if test="${gender=='女'}">selected</c:if> >女
+                    </option>
                 </select>
             </div>
             <button type="submit" class="btn btn-primary">查询</button>
@@ -64,13 +70,13 @@
         <tr>
             <td>${i.count+(list.pageNum-1)*5}</td>
             <td>${user.username }</td>
-            <td>${user.loginname}</td>
-            <td>${user.password }</td>
-            <td>${user.telephone}</td>
+            <td>${user.loginaccount}</td>
+            <td><%--${user.password}--%>******</td>
+            <td>${user.phonenum}</td>
             <td>${user.email}</td>
-            <td>${user.gender}</td>
-            <td>${user.registerTime}</td>
-            <td><a href="#" class="btn btn-primary btn-xs"  onclick="editUser(${user.id})">封号</a>
+            <td>${user.sex}</td>
+            <td><fmt:formatDate value="${user.registrationtime}" pattern="yyyy-MM-dd" type="both"></fmt:formatDate></td>
+            <td><a href="#" class="btn btn-primary btn-xs" onclick="editUser(${user.id})">封号</a>
                 <a href="#" class="btn btn-danger btn-xs" onclick="deleteUser(${user.id})">删除</a>
             </td>
         </tr>
@@ -80,11 +86,11 @@
 <div class="col-md-12 text-right">
     <nav>
         <ul class="pagination">
-            <li ><a href="/static/userList?pn=1">首页 </a></li>
-            <li ><a href="/static/userList?pn=${list.pageNum-1}">上一页 </a></li>
+            <li><a href="/toAmdinUser?pageNum=1">首页 </a></li>
+            <li><a href="/toAmdinUser?pageNum=${list.pageNum-1}">上一页 </a></li>
             <li><a href="#">${list.pageNum}</a></li>
-            <li ><a href="/static/userList?pn=${list.pageNum+1}">下一页</a></li>
-            <li ><a href="/static/userList?pn=${list.pages}">尾页</a></li>
+            <li><a href="/toAmdinUser?pageNum=${list.pageNum+1}">下一页</a></li>
+            <li><a href="/toAmdinUser?pageNum=${list.pages}">尾页</a></li>
         </ul>
     </nav>
 </div>
@@ -100,25 +106,28 @@
                 <h4 class="modal-title" id="myModalLabel">新建用户信息</h4>
             </div>
             <div class="modal-body">
-                <form class="form-horizontal" id="new_user_form">
+                <form class="form-horizontal" id="new_user_form" action="/addUser" method="post">
                     <div class="form-group">
                         <label for="new_Name" class="col-sm-2 control-label">用户名</label>
                         <div class="col-sm-4">
-                            <input type="text" class="form-control" id="new_Name" placeholder="用户名" name="username">
+                            <input type="text" class="form-control" id="new_Name" name="username" placeholder="用户名"/>
                         </div>
                         <label for="new_loginName" class="col-sm-2 control-label">账号</label>
                         <div class="col-sm-4">
-                            <input type="text" class="form-control" id="new_loginName" placeholder="账号" name="loginname">
+                            <input type="text" class="form-control" id="new_loginName" placeholder="账号"
+                                   name="loginaccount">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="new_loginPwd" class="col-sm-2 control-label">密码</label>
                         <div class="col-sm-4">
-                            <input type="password" class="form-control" id="new_loginPwd" placeholder="密码" name="password">
+                            <input type="password" class="form-control" id="new_loginPwd" placeholder="密码"
+                                   name="password">
                         </div>
                         <label for="new_telephone" class="col-sm-2 control-label">电话号码</label>
                         <div class="col-sm-4">
-                            <input type="text" class="form-control" id="new_telephone" placeholder="电话号码" name="telephone">
+                            <input type="text" class="form-control" id="new_telephone" placeholder="电话号码"
+                                   name="phonenum">
                         </div>
                     </div>
 
@@ -130,9 +139,9 @@
                         <label for="new_gender" class="col-sm-2 control-label">
                             性别</label>
                         <div class="col-sm-4">
-                            <select class="form-control" id="new_gender" name="gender">
-                                <option value="女">女</option>
-                                <option value="男">男</option>
+                            <select class="form-control" id="new_gender" name="sex"/>
+                            <option value="女">女</option>
+                            <option value="男">男</option>
                             </select>
                         </div>
                     </div>
@@ -155,56 +164,80 @@
         $("#new_telephone").val("");
         $("#new_email").val("");
     }
+
     // 创建用户
     function createUser() {
-        $.post("/static/addUser",
-            $("#new_user_form").serialize(),
-            function(data){
-                if(data =="ok"){
-                    alert("用户创建成功！");
-                    window.location.reload();
-                }else if(data =="reset"){
-                        alert("该账号已存在！");
-                }else {
-                    alert("用户创建失败！");
-                }
-            });
+        /*   *  var username = $("[name='username']").val();
+             var loginaccount = $("[name='loginaccount']").val();
+             var password = $("[name='password']").val();
+             var phonenum = $("[name='phonenum']").val();
+             var email = $("[name='email']").val();
+             var sex = $("[name='sex']").val();*
+
+             *  var user = ({
+                   "username": username,
+                   "loginaccount": loginaccount,
+                   "password": password,
+                   "phonenum": phonenum,
+                   "email": email,
+                   "sex": sex
+               })**/
+        /*  $.post("/addUser", /!* $("#new_user_form").serialize(),*!/user, function (data) {
+              if (data == 'ok') {
+                  alert("用户创建成功！");
+                  window.location.reload();
+              } else if (data == 'reset') {
+                  alert("该账号已存在！");
+              } else {
+                  alert("用户创建失败！");
+              }
+          }, "json");*/
+        $.post("/addUser", $("#new_user_form").serialize(), function (data) {
+            if (data == "1") {
+                window.location.reload();
+            } else if (data == "2") {
+                alert("该账号已存在！");
+            } else {
+                alert("用户创建失败！");
+            }
+        }, "json")
+
     }
+
     //封号
     function editUser(id) {
-        if(confirm('确实要封号吗?')) {
-            var url="/static/closeUser";
-            var args={"id":id};
-            $.post(url,args,function(data){
-                if(data=='ok'){
+        if (confirm('确实要封号吗?')) {
+            var url = "/closeUser";
+            var args = {"id": id};
+            $.post(url, args, function (data) {
+                if (data == true) {
                     alert("封号成功！");
                     //页面刷新
                     window.location.reload();
-                }
-                else{
+                } else {
                     alert("封号失败");
                     window.location.reload();
                 }
-            });
+            }, "json");
         }
     }
+
     //删除
     function deleteUser(id) {
-        if(confirm('确实要删除该客户吗?')) {
-            var url="/static/deleteUser";
-            var args={"id":id};
-            $.post(url,args,function(data){
-                if(data=='ok'){
-                    alert("客户删除更新成功！");
+        if (confirm('确实要删除该客户吗?')) {
+            var url = "/deleteUser";
+            var args = {"id": id};
+            $.post(url, args, function (data) {
+                if (data == true) {
+                    /* alert("客户删除更新成功！");*/
                     //页面刷新
                     window.location.reload();
                 }
-                else{
+                else {
                     alert("删除失败");
                     window.location.reload();
                 }
-
-            });
+            }, "json");
         }
     }
 </script>

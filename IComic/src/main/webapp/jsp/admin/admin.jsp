@@ -49,7 +49,9 @@
     <ul class="nav navbar-nav navbar-right">
         <li>
             <a href="#"><span
-                    style="display: inline-block;line-height: 70px; color: #ABAFC1"> ${adminUser.username}</span>
+
+                    style="display: inline-block;line-height: 70px; color: #ABAFC1"> ${admin.username}</span>
+
                 <!--<div class="img" style="float: right;margin: 10px;">
                     <img src="../../img/user/user.JPEG" width="50px" style="border-radius:50%"></div>-->
             </a>
@@ -69,7 +71,9 @@
                             <span class="glyphicon glyphicon-home" aria-hidden="true">
                             </span><span class="font">&emsp;管理中心</span></a>
                     </li>
-                    <li class="nav_item"><a href="/userList" target="item-page">
+
+                    <li class="nav_item"><a href="/toAmdinUser" target="item-page">
+
                             <span class="glyphicon glyphicon-user" aria-hidden="true">
                             </span><span class="font">&emsp;用户管理</span></a></li>
                     <li class="nav_item"><a href="/getComics" target="item-page">
@@ -96,7 +100,9 @@
 
         <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 item">
             <div class="iframe">
-                <iframe src="/adminIndex" frameborder="0" name="item-page">
+
+                <iframe src="/static/adminIndex" frameborder="0" name="item-page">
+
 
                 </iframe>
             </div>

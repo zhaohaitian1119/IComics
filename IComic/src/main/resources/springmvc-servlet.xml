@@ -12,20 +12,19 @@
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-  <!--  <bean id="myConversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
-        <property name="converters">
-            <list>
-                <bean class="com.zht.springmvc.tools.StringToDateConverter">
-                    <constructor-arg value="yyyy-MM-dd"/>
-                </bean>
-            </list>
-        </property>
-        加到annotation-driven中  conversion-service="myConversionService"
-    </bean>-->
+    <!--  <bean id="myConversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
+          <property name="converters">
+              <list>
+                  <bean class="com.zht.springmvc.tools.StringToDateConverter">
+                      <constructor-arg value="yyyy-MM-dd"/>
+                  </bean>
+              </list>
+          </property>
+          加到annotation-driven中  conversion-service="myConversionService"
+      </bean>-->
 
 
-
-    <mvc:annotation-driven >
+    <mvc:annotation-driven>
         <mvc:message-converters>
             <bean class="org.springframework.http.converter.StringHttpMessageConverter">
                 <property name="supportedMediaTypes">
@@ -57,7 +56,7 @@
     <!--<bean name="/index.do" class="com.zht.springmvc.controller.IndexController"></bean>-->
 
     <!-- 对转向页面的路径解析。prefix：前缀， suffix：后缀 -->
-    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" >
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
@@ -82,16 +81,17 @@
             </props>
         </property>
     </bean>
-    <bean id="htmlviewResolver"  class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
-        <property name="suffix" value=".html" />
+    <bean id="htmlviewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+        <property name="suffix" value=".html"/>
         <property name="order" value="0"></property>
         <property name="contentType" value="text/html;charset=UTF-8"></property>
     </bean>
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/jsp/" />
-        <property name="suffix" value=".jsp" />
-        <property name="viewClass" value="org.springframework.web.servlet.view.InternalResourceView"/> <!-- 不能用jstl的那个 -->
+        <property name="prefix" value="/jsp/"/>
+        <property name="suffix" value=".jsp"/>
+        <property name="viewClass"
+                  value="org.springframework.web.servlet.view.InternalResourceView"/> <!-- 不能用jstl的那个 -->
         <property name="contentType" value="text/html;charset=UTF-8"/>
         <property name="order" value="0"></property>
     </bean>

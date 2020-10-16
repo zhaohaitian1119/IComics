@@ -7,46 +7,45 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>封号列表</title>
-    <link rel="shortcut icon"	href="/pic/userPath/1.png">
+    <link rel="shortcut icon" href="/pic/userPath/1.png">
     <link rel="stylesheet" href="/static/css/bootstrap.css">
     <script src="/static/js/jquery-3.4.1.js"></script>
     <script src="/static/js/bootstrap.js"></script>
     <link rel="stylesheet" href="/static/css/admin/admin-item.css">
     <script type="text/javascript">
         function editUser(id) {
-            if(confirm('确实要解封吗?')) {
-                var url="/static/openUser";
-                var args={"id":id};
-                $.post(url,args,function(data){
-                    if(data=='ok'){
+            if (confirm('确实要解封吗?')) {
+                var url = "/openUser";
+                var args = {"id": id};
+                $.post(url, args, function (data) {
+                    if (data == "true") {
                         alert("解封成功！");
                         //页面刷新
                         window.location.reload();
-                    }
-                    else{
+                    } else {
                         alert("解封失败");
                     }
                 });
             }
         }
+
         function deleteUser(id) {
-            if(confirm('确实要删除该客户吗?')) {
-                var url="/static/deleteUser";
-                var args={"id":id};
-                $.post(url,args,function(data){
-                    if(data=='ok'){
-                        alert("客户删除更新成功！");
+            if (confirm('确实要删除该客户吗?')) {
+                var url = "/deleteUser";
+                var args = {"id": id};
+                $.post(url, args, function (data) {
+                    if (data == "true") {
                         //页面刷新
                         window.location.reload();
-                    }
-                    else{
+                    } else {
                         alert("删除失败");
                     }
 
@@ -62,7 +61,7 @@
 <div class="panel panel-default">
     <!-- 搜索部分 -->
     <div class="panel-body">
-        <form class="form-inline" method="get" action="/static/getCloseUserByLoginName">
+        <form class="form-inline" method="get" action="/closeList">
             <div class="form-group">
                 <label for="">用户账号</label>
                 <input type="text" class="form-control" id="" value="" name="loginname">
@@ -86,17 +85,17 @@
     </tr>
     </thead>
     <tbody>
-    <c:forEach items="${closeList.list}" var="user" varStatus="i">
+    <c:forEach items="${list.list}" var="user" varStatus="i">
         <tr>
-            <td>${i.count+(closeList.pageNum-1)*5}</td>
+            <td>${i.count+(list.pageNum-1)*5}</td>
             <td>${user.username }</td>
-            <td>${user.loginname}</td>
+            <td>${user.loginaccount}</td>
             <td>${user.password }</td>
-            <td>${user.telephone}</td>
+            <td>${user.phonenum}</td>
             <td>${user.email}</td>
-            <td>${user.gender}</td>
-            <td>${user.registerTime}</td>
-            <td><a href="#" class="btn btn-primary btn-xs"  onclick="editUser(${user.id})">解封</a>
+            <td>${user.sex}</td>
+            <td><fmt:formatDate value="${user.registrationtime}" pattern="yyyy-MM-dd" type="both"></fmt:formatDate></td>
+            <td><a href="#" class="btn btn-primary btn-xs" onclick="editUser(${user.id})">解封</a>
                 <a href="#" class="btn btn-danger btn-xs" onclick="deleteUser(${user.id})">删除</a>
             </td>
         </tr>
@@ -106,11 +105,11 @@
 <div class="col-md-12 text-right">
     <nav>
         <ul class="pagination">
-            <li ><a href="/static/closeList?pn=1">首页 </a></li>
-            <li ><a href="/static/closeList?pn=${closeList.pageNum-1}">上一页 </a></li>
-            <li><a href="#">${closeList.pageNum}</a></li>
-            <li ><a href="/static/closeList?pn=${closeList.pageNum+1}">下一页</a></li>
-            <li ><a href="/static/closeList?pn=${closeList.pages}">尾页</a></li>
+            <li><a href="/static/closeList?pn=1">首页 </a></li>
+            <li><a href="/static/closeList?pn=${list.pageNum-1}">上一页 </a></li>
+            <li><a href="#">${list.pageNum}</a></li>
+            <li><a href="/static/closeList?pn=${list.pageNum+1}">下一页</a></li>
+            <li><a href="/static/closeList?pn=${list.pages}">尾页</a></li>
         </ul>
     </nav>
 </div>

@@ -9,7 +9,7 @@
 <html>
 <head>
     <title>Title</title>
-    <link rel="shortcut icon"	href="/pic/userPath/1.png">
+    <link rel="shortcut icon" href="/pic/userPath/1.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -24,7 +24,8 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-8 col-md-4 item">
-            <a href="/userList" class="thumbnail">
+            <a href="/toAmdinUser" class="thumbnail">
+
                 <h2 class="title">${countUser}
                     <span class="glyphicon glyphicon-user right" aria-hidden="true"></span>
                 </h2>
@@ -90,18 +91,18 @@
                 </p>
             </a>
         </div>
-<div class="col-xs-8 col-md-4 item">
-    <a href="#" class="thumbnail">
-        <h2 class="title">${countHeat}
-            <span class="glyphicon glyphicon-th-list right" aria-hidden="true"></span>
-        </h2>
-        <p>
-        <h4 class="discription">热度总数</h4>
-        </p>
-    </a>
-</div>
+        <div class="col-xs-8 col-md-4 item">
+            <a href="#" class="thumbnail">
+                <h2 class="title">${countHeat}
+                    <span class="glyphicon glyphicon-th-list right" aria-hidden="true"></span>
+                </h2>
+                <p>
+                <h4 class="discription">热度总数</h4>
+                </p>
+            </a>
+        </div>
 
-</div>
+    </div>
 </div>
 </body>
 </html>

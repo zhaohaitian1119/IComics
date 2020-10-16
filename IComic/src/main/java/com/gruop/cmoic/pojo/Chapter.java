@@ -11,6 +11,8 @@ public class Chapter {
 
     private String chaptername;
 
+    private String content;
+
     private Date uploadtime;
 
     private String chaptercontentaddress;
@@ -45,6 +47,14 @@ public class Chapter {
 
     public void setChaptername(String chaptername) {
         this.chaptername = chaptername == null ? null : chaptername.trim();
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content == null ? null : content.trim();
     }
 
     public Date getUploadtime() {
