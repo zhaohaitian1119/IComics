@@ -40,10 +40,10 @@
 
    <!--扫描mapper-->
    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-      <property name="basePackage" value="com.zht.ship.mapper"/>
+      <property name="basePackage" value="com.gruop.cmoic.mapper"/>
    </bean>
    <!--扫描service-->
-   <context:component-scan base-package="com.zht.ship.service"></context:component-scan>
+   <context:component-scan base-package="com.gruop.cmoic.service"></context:component-scan>
 
    <bean class="org.springframework.jdbc.datasource.DataSourceTransactionManager" id="transactionManager">
       <property name="dataSource" ref="dataSource"></property>
@@ -51,7 +51,7 @@
 
 
    <aop:config>
-      <aop:pointcut id="serviceMethod" expression="execution(* com.zht.ship.service..*.*(..))" />
+      <aop:pointcut id="serviceMethod" expression="execution(* com.gruop.cmoic.service..*.*(..))" />
       <aop:advisor advice-ref="txadvice" pointcut-ref="serviceMethod"/>
    </aop:config>
 
