@@ -19,21 +19,26 @@
     <script src="/static/js/bootstrap.js"></script>
     <link rel="stylesheet" href="/static/css/admin/admin-item.css">
     <script type="text/javascript">
+        // function deleteMessage(id) {
+        //     if(confirm('确实要删除该消息吗?')) {
+        //         var url="/static/deleteMessage";
+        //         var args={"id":id};
+        //         $.post(url,args,function(data){
+        //             if(data=='ok'){
+        //                 alert("消息删除更新成功！");
+        //                 //页面刷新
+        //                 window.location.reload();
+        //             }
+        //             else{
+        //                 alert("删除失败");
+        //             }
+        //
+        //         });
+        //     }
+        // }
         function deleteMessage(id) {
             if(confirm('确实要删除该消息吗?')) {
-                var url="/static/deleteMessage";
-                var args={"id":id};
-                $.post(url,args,function(data){
-                    if(data=='ok'){
-                        alert("消息删除更新成功！");
-                        //页面刷新
-                        window.location.reload();
-                    }
-                    else{
-                        alert("删除失败");
-                    }
-
-                });
+                location.href="/static/deleteMessage?id="+id;
             }
         }
     </script>
@@ -67,7 +72,7 @@
     <c:forEach items="${messageList.list}" var="message" varStatus="i">
         <tr>
             <td>${i.count+(messageList.pageNum-1)*5}</td>
-            <td>${message.mname }</td>
+            <td>${message.name }</td>
             <td>${message.email}</td>
             <td>${message.message}</td>
             <td><a href="#" class="btn btn-danger btn-xs" onclick="deleteMessage(${message.id})">删除</a></td>
