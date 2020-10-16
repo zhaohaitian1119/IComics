@@ -6,6 +6,7 @@
     <result column="comicsId" property="comicsid" jdbcType="INTEGER" />
     <result column="chapterNum" property="chapternum" jdbcType="INTEGER" />
     <result column="chapterName" property="chaptername" jdbcType="VARCHAR" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
     <result column="uploadTime" property="uploadtime" jdbcType="DATE" />
     <result column="chapterContentAddress" property="chaptercontentaddress" jdbcType="VARCHAR" />
   </resultMap>
@@ -68,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, comicsId, chapterNum, chapterName, uploadTime, chapterContentAddress
+    id, comicsId, chapterNum, chapterName, content, uploadTime, chapterContentAddress
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.gruop.cmoic.pojo.ChapterExample" >
     select
@@ -102,11 +103,11 @@
   </delete>
   <insert id="insert" parameterType="com.gruop.cmoic.pojo.Chapter" >
     insert into chapter (id, comicsId, chapterNum, 
-      chapterName, uploadTime, chapterContentAddress
-      )
+      chapterName, content, uploadTime, 
+      chapterContentAddress)
     values (#{id,jdbcType=INTEGER}, #{comicsid,jdbcType=INTEGER}, #{chapternum,jdbcType=INTEGER}, 
-      #{chaptername,jdbcType=VARCHAR}, #{uploadtime,jdbcType=DATE}, #{chaptercontentaddress,jdbcType=VARCHAR}
-      )
+      #{chaptername,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, #{uploadtime,jdbcType=DATE}, 
+      #{chaptercontentaddress,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.gruop.cmoic.pojo.Chapter" >
     insert into chapter
@@ -122,6 +123,9 @@
       </if>
       <if test="chaptername != null" >
         chapterName,
+      </if>
+      <if test="content != null" >
+        content,
       </if>
       <if test="uploadtime != null" >
         uploadTime,
@@ -142,6 +146,9 @@
       </if>
       <if test="chaptername != null" >
         #{chaptername,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
       </if>
       <if test="uploadtime != null" >
         #{uploadtime,jdbcType=DATE},
@@ -172,6 +179,9 @@
       <if test="record.chaptername != null" >
         chapterName = #{record.chaptername,jdbcType=VARCHAR},
       </if>
+      <if test="record.content != null" >
+        content = #{record.content,jdbcType=VARCHAR},
+      </if>
       <if test="record.uploadtime != null" >
         uploadTime = #{record.uploadtime,jdbcType=DATE},
       </if>
@@ -189,6 +199,7 @@
       comicsId = #{record.comicsid,jdbcType=INTEGER},
       chapterNum = #{record.chapternum,jdbcType=INTEGER},
       chapterName = #{record.chaptername,jdbcType=VARCHAR},
+      content = #{record.content,jdbcType=VARCHAR},
       uploadTime = #{record.uploadtime,jdbcType=DATE},
       chapterContentAddress = #{record.chaptercontentaddress,jdbcType=VARCHAR}
     <if test="_parameter != null" >
@@ -207,6 +218,9 @@
       <if test="chaptername != null" >
         chapterName = #{chaptername,jdbcType=VARCHAR},
       </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
       <if test="uploadtime != null" >
         uploadTime = #{uploadtime,jdbcType=DATE},
       </if>
@@ -221,6 +235,7 @@
     set comicsId = #{comicsid,jdbcType=INTEGER},
       chapterNum = #{chapternum,jdbcType=INTEGER},
       chapterName = #{chaptername,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
       uploadTime = #{uploadtime,jdbcType=DATE},
       chapterContentAddress = #{chaptercontentaddress,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}

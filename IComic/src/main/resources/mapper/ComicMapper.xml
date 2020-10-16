@@ -3,6 +3,7 @@
 <mapper namespace="com.gruop.cmoic.mapper.ComicMapper" >
   <resultMap id="BaseResultMap" type="com.gruop.cmoic.pojo.Comic" >
     <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="type" property="type" jdbcType="INTEGER" />
     <result column="comicname" property="comicname" jdbcType="VARCHAR" />
     <result column="author" property="author" jdbcType="VARCHAR" />
     <result column="introduction" property="introduction" jdbcType="VARCHAR" />
@@ -72,8 +73,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, comicname, author, introduction, ccode, address, updatetime, photopath, score, 
-    heat
+    id, type, comicname, author, introduction, ccode, address, updatetime, photopath, 
+    score, heat
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.gruop.cmoic.pojo.ComicExample" >
     select
@@ -106,20 +107,23 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.gruop.cmoic.pojo.Comic" >
-    insert into comic (id, comicname, author, 
-      introduction, ccode, address, 
-      updatetime, photopath, score, 
-      heat)
-    values (#{id,jdbcType=INTEGER}, #{comicname,jdbcType=VARCHAR}, #{author,jdbcType=VARCHAR}, 
-      #{introduction,jdbcType=VARCHAR}, #{ccode,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
-      #{updatetime,jdbcType=DATE}, #{photopath,jdbcType=VARCHAR}, #{score,jdbcType=DOUBLE}, 
-      #{heat,jdbcType=INTEGER})
+    insert into comic (id, type, comicname, 
+      author, introduction, ccode, 
+      address, updatetime, photopath, 
+      score, heat)
+    values (#{id,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}, #{comicname,jdbcType=VARCHAR}, 
+      #{author,jdbcType=VARCHAR}, #{introduction,jdbcType=VARCHAR}, #{ccode,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{updatetime,jdbcType=DATE}, #{photopath,jdbcType=VARCHAR}, 
+      #{score,jdbcType=DOUBLE}, #{heat,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.gruop.cmoic.pojo.Comic" >
     insert into comic
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
+      </if>
+      <if test="type != null" >
+        type,
       </if>
       <if test="comicname != null" >
         comicname,
@@ -152,6 +156,9 @@
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
       </if>
       <if test="comicname != null" >
         #{comicname,jdbcType=VARCHAR},
@@ -194,6 +201,9 @@
       <if test="record.id != null" >
         id = #{record.id,jdbcType=INTEGER},
       </if>
+      <if test="record.type != null" >
+        type = #{record.type,jdbcType=INTEGER},
+      </if>
       <if test="record.comicname != null" >
         comicname = #{record.comicname,jdbcType=VARCHAR},
       </if>
@@ -229,6 +239,7 @@
   <update id="updateByExample" parameterType="map" >
     update comic
     set id = #{record.id,jdbcType=INTEGER},
+      type = #{record.type,jdbcType=INTEGER},
       comicname = #{record.comicname,jdbcType=VARCHAR},
       author = #{record.author,jdbcType=VARCHAR},
       introduction = #{record.introduction,jdbcType=VARCHAR},
@@ -245,6 +256,9 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.gruop.cmoic.pojo.Comic" >
     update comic
     <set >
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
       <if test="comicname != null" >
         comicname = #{comicname,jdbcType=VARCHAR},
       </if>
@@ -277,7 +291,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.gruop.cmoic.pojo.Comic" >
     update comic
-    set comicname = #{comicname,jdbcType=VARCHAR},
+    set type = #{type,jdbcType=INTEGER},
+      comicname = #{comicname,jdbcType=VARCHAR},
       author = #{author,jdbcType=VARCHAR},
       introduction = #{introduction,jdbcType=VARCHAR},
       ccode = #{ccode,jdbcType=VARCHAR},
@@ -288,4 +303,36 @@
       heat = #{heat,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="getHeats" resultType="int">
+    SELECT SUM(heat) FROM comic
+  </select>
+  <resultMap id="getComics" type="com.gruop.cmoic.pojo.Comic">
+    <id property="id" column="id"/>
+    <result property="comicname" column="comicname"/>
+    <result property="author" column="author"/>
+    <result property="introduction" column="introduction"/>
+    <result property="ccode" column="ccode"/>
+    <result property="address" column="address"/>
+    <result property="updatetime" column="updatetime"/>
+    <result property="photopath" column="photopath"/>
+    <result property="score" column="score"/>
+    <result property="heat" column="heat"/>
+  </resultMap>
+  <select id="getComicSByOther" parameterType="com.gruop.cmoic.pojo.Comic" resultMap="getComics">
+    select * from comic
+    where 1=1
+    <if test="comicname!=null and comicname!=''">
+      and comicname LIKE concat(concat("%",#{comicname}),"%")
+    </if>
+    <if test="ccode!=null and ccode!=''">
+      and ccode=#{ccode}
+    </if>
+    <if test="address!=null and address!=''">
+      and address=#{address}
+    </if>
+    <if test="author!=null and author!=''">
+      and author=#{author}
+    </if>
+    order by updatetime DESC
+  </select>
 </mapper>

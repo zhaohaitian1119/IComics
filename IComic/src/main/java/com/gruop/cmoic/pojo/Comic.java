@@ -5,6 +5,8 @@ import java.util.Date;
 public class Comic {
     private Integer id;
 
+    private Integer type;
+
     private String comicname;
 
     private String author;
@@ -29,6 +31,14 @@ public class Comic {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
     }
 
     public String getComicname() {

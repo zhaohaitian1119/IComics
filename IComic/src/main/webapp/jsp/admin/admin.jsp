@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>后台管理页面</title>
-    <link rel="shortcut icon"	href="/pic/userPath/1.png">
+    <link rel="shortcut icon" href="/pic/userPath/1.png">
     <link rel="stylesheet" href="/static/css/bootstrap.css">
     <script src="/static/js/jquery-3.4.1.js"></script>
     <script src="/static/js/bootstrap.js"></script>
@@ -40,12 +40,16 @@
 
 <!-- 顶部导航 -->
 <nav class="navbar navbar-default navbar-top" role="navigation">
-    <span><a class="navbar-brand" href="#"><img src="/static/images/admin/2.png" width="200px" height="90px"/></a></span>
-    <div class="button"><button class="btn" type="button"><span class="glyphicon glyphicon-align-justify"
-                                                                aria-hidden="true"></span> </button></div>
+    <span><a class="navbar-brand" href="#"><img src="/static/images/admin/2.png" width="200px"
+                                                height="90px"/></a></span>
+    <div class="button">
+        <button class="btn" type="button"><span class="glyphicon glyphicon-align-justify"
+                                                aria-hidden="true"></span></button>
+    </div>
     <ul class="nav navbar-nav navbar-right">
         <li>
-            <a href="#"><span style="display: inline-block;line-height: 70px; color: #ABAFC1"> ${adminUser.username}</span>
+            <a href="#"><span
+                    style="display: inline-block;line-height: 70px; color: #ABAFC1"> ${admin.username}</span>
                 <!--<div class="img" style="float: right;margin: 10px;">
                     <img src="../../img/user/user.JPEG" width="50px" style="border-radius:50%"></div>-->
             </a>
@@ -65,7 +69,7 @@
                             <span class="glyphicon glyphicon-home" aria-hidden="true">
                             </span><span class="font">&emsp;管理中心</span></a>
                     </li>
-                    <li class="nav_item"><a href="/static/userList" target="item-page">
+                    <li class="nav_item"><a href="/toAmdinUser" target="item-page">
                             <span class="glyphicon glyphicon-user" aria-hidden="true">
                             </span><span class="font">&emsp;用户管理</span></a></li>
                     <li class="nav_item"><a href="/static/getComics" target="item-page">
@@ -77,7 +81,7 @@
                     <li class="nav_item"><a href="/static/messageList" target="item-page">
                         </span><span class="glyphicon glyphicon-comment" aria-hidden="true">
                             </span><span class="font">&emsp;消息管理</span></a></li>
-                    <li class="nav_item"><a href="/static/closeList" target="item-page">
+                    <li class="nav_item"><a href="/closeList" target="item-page">
                             <span class="glyphicon glyphicon-equalizer" aria-hidden="true">
                             </span><span class="font">&emsp;封号管理</span></a></li>
                     <li class="nav_item"><a href="/static/pages/admin/404.jsp" target="item-page">
@@ -91,7 +95,7 @@
         </div>
 
         <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 item">
-            <div class= "iframe">
+            <div class="iframe">
                 <iframe src="/static/adminIndex" frameborder="0" name="item-page">
 
                 </iframe>
