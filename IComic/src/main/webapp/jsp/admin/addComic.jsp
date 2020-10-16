@@ -169,22 +169,22 @@
         </div>
         <div class="menu">类型:</div>
         <div class="kong" style="width: 300px;">
-            总裁 <input type="checkbox" name="clids" value="1">
-            玄幻 <input type="checkbox" name="clids" value="2">
-            都市 <input type="checkbox" name="clids" value="3">
-            冒险 <input type="checkbox" name="clids" value="4"><br>
-            仙侠 <input type="checkbox" name="clids" value="5">
-            热血 <input type="checkbox" name="clids" value="6">
-            恋爱 <input type="checkbox" name="clids" value="7">
-            校园 <input type="checkbox" name="clids" value="8"><br>
-            武侠 <input type="checkbox" name="clids" value="9">
-            悬疑 <input type="checkbox" name="clids" value="10">
-            推理 <input type="checkbox" name="clids" value="11">
-            治愈 <input type="checkbox" name="clids" value="12"><br>
-            穿越 <input type="checkbox" name="clids" value="13">
-            搞笑 <input type="checkbox" name="clids" value="14">
-            古风 <input type="checkbox" name="clids" value="15">
-            后宫 <input type="checkbox" name="clids" value="16">
+            总裁 <input type="radio" name="clids" value="1">
+            玄幻 <input type="radio" name="clids" value="2">
+            都市 <input type="radio" name="clids" value="3">
+            冒险 <input type="radio" name="clids" value="4"><br>
+            仙侠 <input type="radio" name="clids" value="5">
+            热血 <input type="radio" name="clids" value="6">
+            恋爱 <input type="radio" name="clids" value="7">
+            校园 <input type="radio" name="clids" value="8"><br>
+            武侠 <input type="radio" name="clids" value="9">
+            悬疑 <input type="radio" name="clids" value="10">
+            推理 <input type="radio" name="clids" value="11">
+            治愈 <input type="radio" name="clids" value="12"><br>
+            穿越 <input type="radio" name="clids" value="13">
+            搞笑 <input type="radio" name="clids" value="14">
+            古风 <input type="radio" name="clids" value="15">
+            后宫 <input type="radio" name="clids" value="16">
         </div>
         <div class="menu">简介:</div>
         <div class="kong">

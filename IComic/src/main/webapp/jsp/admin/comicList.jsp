@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -24,7 +25,7 @@
 <div class="panel panel-default">
     <!-- 搜索部分 -->
     <div class="panel-body">
-        <form class="form-inline" method="get" action="/static/getComicSByOther">
+        <form class="form-inline" method="get" action="/getComicSByOther">
             <div class="form-group">
                 <label for="comicName">漫画名</label>
                 <input type="text" class="form-control" id="comicName" name="comicname">
@@ -35,14 +36,14 @@
             </div>
             <div class="form-group">
                 <label for="comicCode">漫画状态</label>
-                <select class="form-control" id="comicCode" name="code">
+                <select class="form-control" id="comicCode" name="ccode">
                     <option value="连载">连载</option>
                     <option value="完结">完结</option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="comicArea">漫画地区</label>
-                <select class="form-control" id="comicArea" name="area">
+                <select class="form-control" id="comicArea" name="address">
                     <option value="国漫">国漫</option>
                     <option value="日漫">日漫</option>
                     <option value="欧美">欧美</option>
@@ -52,7 +53,7 @@
         </form>
     </div>
 </div>
-<a href="/static/pages/admin/addComic.jsp" class="btn btn-primary">新建</a>
+<a href="/jsp/admin/addComic.jsp" class="btn btn-primary">新建</a>
 <table class="table table-striped">
     <thead class="thead-light">
     <tr>
@@ -74,8 +75,11 @@
             <td>${user.comicname }</td>
             <td>${user.author}</td>
             <td>${user.ccode}</td>
-            <td>${user.area}</td>
-            <td>${user.updatetime}</td>
+            <td>${user.address}</td>
+            <td>
+                <fmt:formatDate value="${user.updatetime}" pattern="yyyy-MM-dd"></fmt:formatDate>
+
+            </td>
             <td>${user.score}</td>
             <td>${user.heat}</td>
             <td>
@@ -89,11 +93,11 @@
 <div class="col-md-12 text-right">
     <nav>
         <ul class="pagination">
-            <li ><a href="/static/getComics?pn=1">首页 </a></li>
-            <li ><a href="/static/getComics?pn=${comicList.pageNum-1}">上一页 </a></li>
+            <li ><a href="/getComics?pn=1">首页 </a></li>
+            <li ><a href="/getComics?pn=${comicList.pageNum-1}">上一页 </a></li>
             <li><a href="#">${comicList.pageNum}</a></li>
-            <li ><a href="/static/getComics?pn=${comicList.pageNum+1}">下一页</a></li>
-            <li ><a href="/static/getComics?pn=${comicList.pages}">尾页</a></li>
+            <li ><a href="/getComics?pn=${comicList.pageNum+1}">下一页</a></li>
+            <li ><a href="/getComics?pn=${comicList.pages}">尾页</a></li>
         </ul>
     </nav>
 </div>
