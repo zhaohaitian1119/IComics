@@ -25,7 +25,7 @@
         <h2>4<img src="/static/images/404/confused.gif" alt="image">4</h2>
         <p>应用程序中发生的错误和您的页面无法提供服务。</p>
 
-        <a href="/static/adminIndex">go back</a>
+        <a href="/adminIndex">go back</a>
     </div>
 </div>
 </body>

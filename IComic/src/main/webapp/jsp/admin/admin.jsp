@@ -65,29 +65,29 @@
         <div class="left_navbar  col-xs-2 col-sm-2 col-md-2 col-lg-2">
             <div class="nav_list" id="left_navbar">
                 <ul class="nav  nav-stacked">
-                    <li class="nav_item active"><a href="/static/adminIndex" target="item-page">
+                    <li class="nav_item active"><a href="/adminIndex" target="item-page">
                             <span class="glyphicon glyphicon-home" aria-hidden="true">
                             </span><span class="font">&emsp;管理中心</span></a>
                     </li>
-                    <li class="nav_item"><a href="/static/userList" target="item-page">
+                    <li class="nav_item"><a href="/userList" target="item-page">
                             <span class="glyphicon glyphicon-user" aria-hidden="true">
                             </span><span class="font">&emsp;用户管理</span></a></li>
-                    <li class="nav_item"><a href="/static/getComics" target="item-page">
+                    <li class="nav_item"><a href="/getComics" target="item-page">
                             <span class="glyphicon glyphicon-log-in" aria-hidden="true">
                             </span><span class="font">&emsp;漫画管理</span></a></li>
-                    <li class="nav_item"><a href="/static/commentList" target="item-page">
+                    <li class="nav_item"><a href="/commentList" target="item-page">
                             <span class="glyphicon glyphicon-list-alt" aria-hidden="true">
                             </span><span class="font">&emsp;评论管理</span></a></li>
-                    <li class="nav_item"><a href="/static/messageList" target="item-page">
+                    <li class="nav_item"><a href="/messageList" target="item-page">
                         </span><span class="glyphicon glyphicon-comment" aria-hidden="true">
                             </span><span class="font">&emsp;消息管理</span></a></li>
-                    <li class="nav_item"><a href="/static/closeList" target="item-page">
+                    <li class="nav_item"><a href="/closeList" target="item-page">
                             <span class="glyphicon glyphicon-equalizer" aria-hidden="true">
                             </span><span class="font">&emsp;封号管理</span></a></li>
-                    <li class="nav_item"><a href="/static/pages/admin/404.jsp" target="item-page">
+                    <li class="nav_item"><a href="/jsp/admin/404.jsp" target="item-page">
                             <span class="glyphicon glyphicon-flag" aria-hidden="true">
                             </span><span class="font">&emsp;作家管理</span></a></li>
-                    <li class="nav_item"><a href="/static/pages/admin/404.jsp" target="item-page">
+                    <li class="nav_item"><a href="/jsp/admin/404.jsp" target="item-page">
                             <span class="glyphicon glyphicon-send" aria-hidden="true">
                             </span><span class="font">&emsp;广告管理</span></a></li>
                 </ul>
@@ -96,7 +96,7 @@
 
         <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 item">
             <div class="iframe">
-                <iframe src="/static/adminIndex" frameborder="0" name="item-page">
+                <iframe src="/adminIndex" frameborder="0" name="item-page">
 
                 </iframe>
             </div>
