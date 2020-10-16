@@ -16,7 +16,7 @@
     <title>Title</title>
     <link rel="shortcut icon"	href="/pic/userPath/1.png">
     <link rel="stylesheet" href="/static/css/bootstrap.css">
-    <script src="/static/js/jquery-3.4.1.js"></script>
+    <script src="/static/js/jquery-1.12.4.js"></script>
     <script src="/static/js/bootstrap.js"></script>
     <link rel="stylesheet" href="/static/css/admin/admin-item.css">
 </head>
@@ -84,7 +84,7 @@
             <td>${user.heat}</td>
             <td>
                 <a href="#" class="btn btn-danger btn-xs" onclick="deleteUser(${user.id})">删除漫画</a>
-                <a href="/static/chapterList?comicid=${user.id}" class="btn btn-primary btn-xs">章节管理</a>
+                <a href="/chapterList?comicid=${user.id}" class="btn btn-primary btn-xs">章节管理</a>
             </td>
         </tr>
     </c:forEach>
@@ -113,7 +113,7 @@
     }
     // 创建漫画
     function createUser() {
-        $.post("/static/addUser",
+        $.post("/addUser",
             $("#new_user_form").serialize(),
             function(data){
                 if(data =="ok"){
@@ -128,11 +128,11 @@
    //删除漫画
     function deleteUser(id) {
         if(confirm('确实要删除该漫画吗?')) {
-            var url="/static/deleteComicById";
+            var url="/deleteComicById";
             var args={"id":id};
             $.post(url,args,function(data){
-                if(data=='ok'){
-                    alert("客户删除更新成功！");
+                if(data=='true'){
+                    alert("删除更新成功！");
                     //页面刷新
                     window.location.reload();
                 }

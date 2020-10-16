@@ -38,7 +38,7 @@
         // }
         function deleteMessage(id) {
             if(confirm('确实要删除该消息吗?')) {
-                location.href="/static/deleteMessage?id="+id;
+                location.href="/deleteMessage?id="+id;
             }
         }
     </script>
@@ -49,7 +49,7 @@
 <div class="panel panel-default">
     <!-- 搜索部分 -->
     <div class="panel-body">
-        <form class="form-inline" method="get" action="/static/getMessagesByName">
+        <form class="form-inline" method="get" action="/getByUserName">
             <div class="form-group">
                 <label for="">用户名称</label>
                 <input type="text" class="form-control" id="" value="" name="name">
@@ -83,11 +83,11 @@
 <div class="col-md-12 text-right">
     <nav>
         <ul class="pagination">
-            <li ><a href="/static/messageList?pn=1">首页 </a></li>
-            <li ><a href="/static/messageList?pn=${messageList.pageNum-1}">上一页 </a></li>
+            <li ><a href="/messageList?pn=1">首页 </a></li>
+            <li ><a href="/messageList?pn=${messageList.pageNum-1}">上一页 </a></li>
             <li><a href="#">${messageList.pageNum}</a></li>
-            <li ><a href="/static/messageList?pn=${messageList.pageNum+1}">下一页</a></li>
-            <li ><a href="/static/messageList?pn=${messageList.pages}">尾页</a></li>
+            <li ><a href="/messageList?pn=${messageList.pageNum+1}">下一页</a></li>
+            <li ><a href="/messageList?pn=${messageList.pages}">尾页</a></li>
         </ul>
     </nav>
 </div>

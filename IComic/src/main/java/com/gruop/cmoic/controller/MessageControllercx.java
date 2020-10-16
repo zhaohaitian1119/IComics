@@ -27,7 +27,7 @@ public class MessageControllercx {
     @Resource
     MessageServicecx messageServicecx;
 
-    @RequestMapping("/static/messageList")
+    @RequestMapping("/messageList")
     public String messageList(Model model, HttpServletRequest request){
         int Num=1;
         String pn=request.getParameter("pn");
@@ -38,6 +38,16 @@ public class MessageControllercx {
         PageHelper.startPage(Num,pageSize);
         PageHelper.orderBy("id desc");
         List<Information> information = messageServicecx.selectAll(Num, pageSize);
+        PageInfo pageInfo=new PageInfo(information);
+        model.addAttribute("messageList",pageInfo);
+        return "admin/messageList";
+    }
+
+    @RequestMapping("/getByUserName")
+    public String getByUserName(HttpServletRequest request,Model model){
+        String name = request.getParameter("name");
+        System.out.println(name);
+        List<Information> information = messageServicecx.selByUserName(name);
         PageInfo pageInfo=new PageInfo(information);
         model.addAttribute("messageList",pageInfo);
         return "admin/messageList";
@@ -56,9 +66,9 @@ public class MessageControllercx {
 //        return JSONObject.toJSONString(map);
 //    }
 
-    @RequestMapping("/static/deleteMessage")
+    @RequestMapping("/deleteMessage")
     public String deleteMessage(int id){
         int del = messageServicecx.del(id);
-        return "redirect:/static/messageList";
+        return "redirect:/messageList";
     }
 }

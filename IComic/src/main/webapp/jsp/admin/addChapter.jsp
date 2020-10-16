@@ -131,22 +131,26 @@
 <%--<%--%>
     <%--int comicid=Integer.parseInt(request.getParameter("comicid"));--%>
 <%--%>--%>
-<form name="tijiao" method="post" action="/static/addChapter" enctype="multipart/form-data">
+<form name="tijiao" method="post" action="/addChapter" enctype="multipart/form-data">
     <div class="left"></div>
     <div class="pg_body">
         <div class="menu">漫画id:</div>
         <div class="kong">
-            <input id="text1" type="text" name="comicid"<%-- value="<%=comicid%>"--%> readonly="readonly">
+            <input id="text1" type="text" name="comicsid" value="${comicid}" readonly="readonly">
         </div>
         <div class="menu">章节数:</div>
         <div class="kong">
-            <input id="i2" type="text" name="cnumber" placeholder="请输入章节数">
+            <input id="i2" type="text" name="chapternum" placeholder="请输入章节数">
         </div>
         <div class="menu">章节名:</div>
         <div class="kong" style="width:200px;">
-            <input id="i4" type="text" name="cname" placeholder="请输入章节名">
+            <input id="i4" type="text" name="chaptername" placeholder="请输入章节名">
         </div>
         <div class="menu">章节内容:</div>
+        <div class="kong">
+            <textarea name="content" style="width: 280px;height: 40px;" placeholder="请输入章节简介"></textarea>
+        </div>
+        <div class="menu">章节封面:</div>
         <div class="kong">
             <input type="file" name="file" multiple="multiple" value="选择内容" accept="image/*">
         </div>

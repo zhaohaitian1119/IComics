@@ -3,6 +3,7 @@ package com.gruop.cmoic.service.impl;
 import com.gruop.cmoic.mapper.InformationMapper;
 import com.gruop.cmoic.mapper.NewsMapper;
 import com.gruop.cmoic.pojo.Information;
+import com.gruop.cmoic.pojo.InformationExample;
 import com.gruop.cmoic.pojo.News;
 import com.gruop.cmoic.pojo.NewsExample;
 import com.gruop.cmoic.service.MessageServicecx;
@@ -29,5 +30,14 @@ public class MessageServicecxImpl implements MessageServicecx{
     @Override
     public int del(int id) {
         return informationMapper.deleteByPrimaryKey(id);
+    }
+
+    @Override
+    public List<Information> selByUserName(String username) {
+        InformationExample example = new InformationExample();
+        InformationExample.Criteria criteria = example.createCriteria();
+        criteria.andNameLike("%"+username+"%");
+        List<Information> information = informationMapper.selectByExample(example);
+        return information;
     }
 }
