@@ -19,22 +19,28 @@
     <script src="/static/js/bootstrap.js"></script>
     <link rel="stylesheet" href="/static/css/admin/admin-item.css">
     <script>
+        // function deleteComment(id) {
+        //     if(confirm('确实要删除该评论吗?')) {
+        //         var url="/static/deleteComment";
+        //         var args={"id":id};
+        //         $.post(url,args,function(data){
+        //             if(data=='ok'){
+        //                 alert("评论删除更新成功！");
+        //                 //页面刷新
+        //                 window.location.reload();
+        //             }
+        //             else{
+        //                 alert("删除失败");
+        //                 window.location.reload();
+        //             }
+        //
+        //         });
+        //     }
+        // }
+
         function deleteComment(id) {
             if(confirm('确实要删除该评论吗?')) {
-                var url="/static/deleteComment";
-                var args={"id":id};
-                $.post(url,args,function(data){
-                    if(data=='ok'){
-                        alert("评论删除更新成功！");
-                        //页面刷新
-                        window.location.reload();
-                    }
-                    else{
-                        alert("删除失败");
-                        window.location.reload();
-                    }
-
-                });
+                location.href="/static/deleteComment?id="+id;
             }
         }
     </script>
@@ -69,9 +75,9 @@
         <tr>
             <td>${i.count+(commentList.pageNum-1)*5}</td>
             <td>${user.userid }</td>
-            <td>${user.comicid}</td>
-            <td>${user.message }</td>
-            <td>${user.ctime}</td>
+            <td>${user.newsid}</td>
+            <td>${user.comments }</td>
+            <td>${user.commenttime}</td>
             <td>
                 <a href="#" class="btn btn-danger btn-xs" onclick="deleteComment(${user.id})">删除</a>
             </td>
