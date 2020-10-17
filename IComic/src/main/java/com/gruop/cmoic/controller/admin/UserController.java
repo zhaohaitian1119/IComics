@@ -1,4 +1,4 @@
-package com.gruop.cmoic.controller;
+package com.gruop.cmoic.controller.admin;
 
 import com.github.pagehelper.PageInfo;
 import com.gruop.cmoic.pojo.User;

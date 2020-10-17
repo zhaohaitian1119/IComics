@@ -90,7 +90,7 @@
             <td>${i.count+(list.pageNum-1)*5}</td>
             <td>${user.username }</td>
             <td>${user.loginaccount}</td>
-            <td>${user.password }</td>
+            <td>$<%--{user.password }--%>******</td>
             <td>${user.phonenum}</td>
             <td>${user.email}</td>
             <td>${user.sex}</td>
