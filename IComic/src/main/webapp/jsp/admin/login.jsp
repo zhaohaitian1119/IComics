@@ -33,7 +33,7 @@
             <h1>Login Form</h1>
             <div class="alert-close"></div>
         </div>
-        <form action="/static/adminLogin" method="get">
+        <form action="/adminLogin" method="get">
             <p style="color: red;margin-bottom: 10px">${msg}</p>
             <li>
                 <input type="text" class="text"  placeholder="username" name="username"

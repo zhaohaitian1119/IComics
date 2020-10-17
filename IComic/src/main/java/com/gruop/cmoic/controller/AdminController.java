@@ -24,7 +24,7 @@ public class AdminController {
     /*
      * 管理员登录
      * */
-    @RequestMapping("/static/adminLogin")
+    @RequestMapping("/adminLogin")
     public String adminLogin(String username, String password, Model model, HttpSession session) {
         if (username == "" || username.isEmpty()) {
             model.addAttribute("msg", "用户名不能为空");

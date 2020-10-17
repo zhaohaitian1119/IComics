@@ -101,7 +101,7 @@
         <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 item">
             <div class="iframe">
 
-                <iframe src="/static/adminIndex" frameborder="0" name="item-page">
+                <iframe src="/adminIndex" frameborder="0" name="item-page">
 
 
                 </iframe>
