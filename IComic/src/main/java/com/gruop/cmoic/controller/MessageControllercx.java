@@ -61,4 +61,28 @@ public class MessageControllercx {
         int del = messageServicecx.del(id);
         return "redirect:/static/messageList";
     }
+
+//    @RequestMapping("/static/addMessage")
+//    public String addMessage(Information information,String mname,String email,String message){
+//        Map<String,Object> map=new HashMap<>();
+//        information.setName(mname);
+//        information.setEmail(email);
+//        information.setMessage(message);
+//        int add = messageServicecx.add(information);
+//        if(add>0){
+//            map.put("data","ok");
+//        }else{
+//            map.put("data","no");
+//        }
+//        return JSONObject.toJSONString(map);
+//    }
+
+    @RequestMapping("/static/addMessage")
+    public String addMessage(Information information,String mname,String email,String message){
+        information.setName(mname);
+        information.setEmail(email);
+        information.setMessage(message);
+        int add = messageServicecx.add(information);
+        return "redirect:/static/messageList";
+    }
 }

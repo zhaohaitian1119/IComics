@@ -30,4 +30,9 @@ public class MessageServicecxImpl implements MessageServicecx{
     public int del(int id) {
         return informationMapper.deleteByPrimaryKey(id);
     }
+
+    @Override
+    public int add(Information information) {
+        return informationMapper.insert(information);
+    }
 }

@@ -24,19 +24,19 @@
     <script type="text/javascript" src="/static/js/index/functions.js"></script>
     <script type="text/javascript" src="/static/js/index/my.js"></script>
     <script>
-       function fun1() {
-            $.post("/static/addMessage",
-                $("#contactForm").serialize(),
-                function(data){
-                    if(data =="ok"){
-                        alert("发送成功！");
-                        window.location.reload();
-                    }else{
-                        alert("发送失败！");
-                        window.location.reload();
-                    }
-                });
-       }
+       // function fun1() {
+       //      $.post("/static/addMessage",
+       //          $("#contactForm").serialize(),
+       //          function(data){
+       //              if(data =="ok"){
+       //                  alert("发送成功！");
+       //                  window.location.reload();
+       //              }else{
+       //                  alert("发送失败！");
+       //                  window.location.reload();
+       //              }
+       //          });
+       // }
     </script>
 </head>
 <body class="contact">
@@ -64,7 +64,7 @@
             <div class="space50"></div>
 
             <div class="contact-form">
-                <form method="post" id="contactForm">
+                <form method="post" action="/static/addMessage">
                     <div class="block-form locked">
                         <input type="text" name="mname" id="name" placeholder="Name" />
                         <input type="email" name="email" id="email" placeholder="Email" />
@@ -72,8 +72,10 @@
                     <div class="block-form">
                         <textarea name="message" id="message" cols="30" rows="10" placeholder="Message"></textarea>
                     </div>
-                    <div class="block-form"><input type="button" value="现在发送" id="submit-form"
-                                                   class="settings-clr" onclick="fun1()"/>
+                    <%--<div class="block-form"><input type="button" value="现在发送" id="submit-form"--%>
+                                                   <%--class="settings-clr" onclick="fun1()"/>--%>
+                    <div class="block-form"><input type="submit" value="现在发送" id="submit-form"
+                                                   class="settings-clr"/>
                         <p id="resultofsend"></p>
                     </div>
                 </form>
