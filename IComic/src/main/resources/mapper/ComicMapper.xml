@@ -90,6 +90,12 @@
       order by ${orderByClause}
     </if>
   </select>
+  <select id="selectOrderHeatasc" resultMap="BaseResultMap" parameterType="com.gruop.cmoic.pojo.Comic" >
+    select * from comic order by score DESC
+  </select>
+  <select id="selectOrderHeatdesc" resultMap="BaseResultMap" parameterType="com.gruop.cmoic.pojo.Comic" >
+    select * from comic order by score ASC limit 0,5
+  </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />

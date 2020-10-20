@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -85,7 +86,7 @@
         <div id="item-info">
             <!-- 漫画图片 -->
             <div class="icon">
-                <img  src="/pic/${comic.photopath}" alt="">
+                <img  src="${comic.photopath}" alt="">
             </div>
             <div class="more-info">
                 <h1 class="mytext-title2">${comic.comicname}</h1>
@@ -100,7 +101,7 @@
                 </div>
                 <h4 class="mytext-p3">作者：${comic.author}</h4>
                 <span class="mytext-p2 left f2">状态：${comic.ccode}</span>
-                <span class="mytext-p2 left f2">更新时间：${comic.updatetime}</span>
+                <span class="mytext-p2 left f2">更新时间：<fmt:formatDate value="${comic.updatetime}" pattern="yyyy-MM-dd"></fmt:formatDate></span>
                 <br><br>
                 <h4 class="mytext-p3">简介：</h4>
                 <p class="synopsis mytext-p3">
@@ -118,21 +119,21 @@
         <div class="w870 left catalog-info">
             <div class="catalog-info-contant">
                 <c:forEach items="${chapterList}" var="chapter">
-                <a href="/static/getSingle?comicid=${chapter.comicid}&cnumber=${chapter.cnumber}"><span class="catalog-item mytext-p3-indent left f4">第${chapter.cnumber}话：${chapter.cname}</span></a>
+                <a href="/getSingle?comicid=${chapter.comicsid}&cnumber=${chapter.chapternum}"><span class="catalog-item mytext-p3-indent left f4">${chapter.chaptername}</span></a>
                 </c:forEach>
                 <div class="clearfix"></div>
                 <a href="#"><p class="center"><span class="show-all mytext-title2">显示全部</span></p></a>
             </div>
             <div class="clearfix"></div>
             <h1 class="title-line blue settings-text"><span class="current-bg pr5">相似推荐</span>
-                <a class="reset" href="/static/getDetail?pn=${like.pageNum+1}&id=${comic.id}"><small class="current-bg right">换一批 </small></a>
+                <%--<a class="reset" href="/getDetail?pn=${like.pageNum+1}&id=${comic.id}"><small class="current-bg right">换一批 </small></a>--%>
             </h1>
             <div class="projects-band-nohidden">
                 <ul class="likes">
                     <c:forEach items="${like.list}" var="comic">
-                    <li><a href="/static/getDetail?id=${comic.id}" class="inline-border"><img src="/pic/${comic.photopath}" alt=""/></a>
+                    <li><a href="/static/getDetail?id=${comic.id}" class="inline-border"><img src="/${comic.photopath}" alt=""/></a>
                         <div class="info">
-                            <a href="/static/getDetail?id=${comic.id}" class="description center">
+                            <a href="/getDetail?id=${comic.id}" class="description center">
                                 <h4 class="title mytext-title" style="font-size: 15px">${comic.comicname}</h4>
                             </a>
                             <p class="author center mytext-p">【${comic.author}】</p>
@@ -149,12 +150,12 @@
                 <c:forEach items="${commentList}" var="coment" end="4" begin="0" varStatus="i">
                 <div class="comments-block">
                     <!--用户名-->
-                    <h3 class="com-author">@by:${coment.user.username}</h3>
+                    <h3 class="com-author">@by:${coment.username}</h3>
                     <!--评论时间-->
                     <p class="com-text mytext-p3">
-                        ${coment.message}
+                        ${coment.comments}
                     </p>
-                    <small>${coment.ctime} - <a href="#" class="blue reply-button">回复</a></small>
+                    <small><fmt:formatDate value="${coment.commenttime}" pattern="yyyy-MM-dd"></fmt:formatDate> - <a href="#" class="blue reply-button">回复</a></small>
                 </div>
                 </c:forEach>
                 <div class="space30"></div>
@@ -183,8 +184,8 @@
                 <ul class="nav nav-stacked">
                     <span class="mytext-title2-ml">国漫热门排行</span>
                     <c:forEach items="${guo}" var="comic" begin="0" end="4">
-                    <li class="rank-items"><a href="/static/getDetail?id=${comic.id}">
-                        <img src="/pic/${comic.photopath}" style="height:118px;width: 100px"  class="rank-ican left">
+                    <li class="rank-items"><a href="/getDetail?id=${comic.id}">
+                        <img src="${comic.photopath}" style="height:118px;width: 100px"  class="rank-ican left">
                         <div class="rank-info right">
                             <div class="left">
                                 <h4 class="title mytext-title">${comic.comicname}</h4>
@@ -200,8 +201,8 @@
                 <ul class="nav nav-stacked">
                     <span class="mytext-title2-ml">日漫热门排行</span>
                     <c:forEach items="${ri}" var="comic" begin="0" end="4">
-                    <li class="rank-items"><a href="/static/getDetail?id=${comic.id}">
-                        <img src="/pic/${comic.photopath}" style="height:118px;width: 100px"  class="rank-ican left">
+                    <li class="rank-items"><a href="/getDetail?id=${comic.id}">
+                        <img src="${comic.photopath}" style="height:118px;width: 100px"  class="rank-ican left">
                         <div class="rank-info right">
                             <div class="left">
                                 <h4 class="title mytext-title">${comic.comicname}</h4>
@@ -217,8 +218,8 @@
                 <ul class="nav nav-stacked">
                     <span class="mytext-title2-ml">欧美热门排行</span>
                     <c:forEach items="${ou}" var="comic" begin="0" end="4">
-                    <li class="rank-items"><a href="/static/getDetail?id=${comic.id}">
-                        <img src="/pic/${comic.photopath}" style="height:118px;width: 100px"  class="rank-ican left">
+                    <li class="rank-items"><a href="/getDetail?id=${comic.id}">
+                        <img src="${comic.photopath}" style="height:118px;width: 100px"  class="rank-ican left">
                         <div class="rank-info right">
                             <div class="left">
                                 <h4 class="title mytext-title">${comic.comicname}</h4>

@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -104,13 +105,13 @@
     <div class="carousel" data-gap="80">
         <figure>
 
-            <img src="/static/images/slider/1.jpg" alt="">
+            <img src="/static/images/slider/7.jpg" alt="">
             <img src="/static/images/slider/2.jpg" alt="">
             <img src="/static/images/slider/3.jpg" alt="">
             <img src="/static/images/slider/4.jpg" alt="">
             <img src="/static/images/slider/5.jpg" alt="">
             <img src="/static/images/slider/6.jpg" alt="">
-            <img src="/static/images/slider/7.jpg" alt="">
+            <img src="/static/images/slider/1.jpg" alt="">
             <img src="/static/images/slider/8.jpg" alt="">
         </figure>
         <nav>
@@ -140,14 +141,21 @@
                 <ul class="scroll-band">
                     <c:forEach items="${heatList}" varStatus="i" var="comic" begin="0" end="10">
                     <li>
-                        <a href="/static/getDetail?id=${comic.id}" class="inline-border">
-                            <img src="/pic/${comic.photopath}" alt="" width="200" height="225" /></a>
+                        <a href="/getDetail?id=${comic.id}" class="inline-border">
+                            <img src="${comic.photopath}" alt="" width="200" height="225" /></a>
                         <div class="info">
                             <a href="#" class="description center">
                                 <h4 class="title mytext-title">${comic.comicname}</h4>
                             </a>
                             <p class="author center mytext-p">【${comic.author}】</p>
-                            <p class="type center mytext-p">${comic.comicListsString}</p>
+                            <p class="type center mytext-p">
+                                <c:if test="${comic.type ==1}">总裁</c:if><c:if test="${comic.type ==1}">总裁</c:if><c:if test="${comic.type ==2}">玄幻</c:if><c:if test="${comic.type ==3}">都市</c:if>
+                                <c:if test="${comic.type ==4}">冒险</c:if><c:if test="${comic.type ==5}">仙侠</c:if><c:if test="${comic.type ==6}">热血</c:if>
+                                <c:if test="${comic.type ==7}">恋爱</c:if><c:if test="${comic.type ==8}">校园</c:if><c:if test="${comic.type ==9}">武侠</c:if>
+                                <c:if test="${comic.type ==10}">悬疑</c:if><c:if test="${comic.type ==11}">推理</c:if><c:if test="${comic.type ==12}">治愈</c:if>
+                                <c:if test="${comic.type ==13}">穿越</c:if><c:if test="${comic.type ==14}">搞笑</c:if><c:if test="${comic.type ==15}">古风</c:if>
+                                <c:if test="${comic.type ==16}">后宫</c:if>
+                            </p>
                         </div>
                     </li>
                     </c:forEach>
@@ -159,13 +167,20 @@
             <div class="projects-band-nohidden">
                 <ul class="newitem">
                     <c:forEach items="${timeList}" var="comic" end="9" begin="0">
-                    <li><a href="/static/getDetail?id=${comic.id}" class="inline-border"><img src="/pic/${comic.photopath}" alt="" width="200" height="225"></a>
+                    <li><a href="/getDetail?id=${comic.id}" class="inline-border"><img src="${comic.photopath}" alt="" width="200" height="225"></a>
                         <div class="info">
                             <a href="#" class="description center">
                                 <h4 class="title mytext-title">${comic.comicname}</h4>
                             </a>
                             <p class="author center mytext-p">【${comic.author}】</p>
-                            <p class="type center mytext-p">${comic.comicListsString}</p>
+                            <p class="type center mytext-p">
+                                <c:if test="${comic.type ==1}">总裁</c:if><c:if test="${comic.type ==1}">总裁</c:if><c:if test="${comic.type ==2}">玄幻</c:if><c:if test="${comic.type ==3}">都市</c:if>
+                                <c:if test="${comic.type ==4}">冒险</c:if><c:if test="${comic.type ==5}">仙侠</c:if><c:if test="${comic.type ==6}">热血</c:if>
+                                <c:if test="${comic.type ==7}">恋爱</c:if><c:if test="${comic.type ==8}">校园</c:if><c:if test="${comic.type ==9}">武侠</c:if>
+                                <c:if test="${comic.type ==10}">悬疑</c:if><c:if test="${comic.type ==11}">推理</c:if><c:if test="${comic.type ==12}">治愈</c:if>
+                                <c:if test="${comic.type ==13}">穿越</c:if><c:if test="${comic.type ==14}">搞笑</c:if><c:if test="${comic.type ==15}">古风</c:if>
+                                <c:if test="${comic.type ==16}">后宫</c:if>
+                            </p>
                         </div>
                         </li>
                     </c:forEach>
@@ -180,8 +195,8 @@
                         <span class="current-bg pr5">国漫热门排行</span></h1>
                     <ul class="nav nav-stacked">
                         <c:forEach items="${guo}" var="comic" begin="0" end="2" varStatus="i">
-                        <li class="rank-items"><a href="/static/getDetail?id=${comic.id}">
-                            <img src="/pic/${comic.photopath}" alt="" class="rank-ican left">
+                        <li class="rank-items"><a href="/getDetail?id=${comic.id}">
+                            <img src="${comic.photopath}" alt="" class="rank-ican left">
                             <div class="rank-info left">
                                 <span class="rank-num left">${i.count}</span>
                                 <div class="left">
@@ -199,8 +214,8 @@
                     </h1>
                     <ul class="nav nav-stacked">
                         <c:forEach items="${ri}" varStatus="i" end="2" begin="0" var="comic">
-                        <li class="rank-items"><a href="/static/getDetail?id=${comic.id}">
-                            <img src="/pic/${comic.photopath}" alt="" class="rank-ican left">
+                        <li class="rank-items"><a href="/getDetail?id=${comic.id}">
+                            <img src="${comic.photopath}" alt="" class="rank-ican left">
                             <div class="rank-info left">
                                 <span class="rank-num left">${i.count}</span>
                                 <div class="left">
@@ -217,8 +232,8 @@
                         <span class="current-bg pr5">欧美热门排行</span></h1>
                     <ul class="nav nav-stacked">
                         <c:forEach items="${ou}" var="comic" begin="0" end="2" varStatus="i">
-                        <li class="rank-items"><a href="/static/getDetail?id=${comic.id}">
-                            <img src="/pic/${comic.photopath}" alt="" class="rank-ican left">
+                        <li class="rank-items"><a href="/getDetail?id=${comic.id}">
+                            <img src="${comic.photopath}" alt="" class="rank-ican left">
                             <div class="rank-info left">
                                 <span class="rank-num left">${i.count}</span>
                                 <div class="left">
@@ -257,9 +272,9 @@
                     </div>
                     <p class="mytext-title">声明：IComic漫画网为纯属个人学习项目，仅作为学习网站部署搭建学习所用，并不具备版权，广大读者老爷们如果喜欢，且有支付能力，请您一定支持正版。</p>
                     <div class="more-proj">
-                        <a href="/static/pages/index/about.jsp" class="inline-border standart-button-style mln settings-clr"><span
+                        <a href="/jsp/index/about.jsp" class="inline-border standart-button-style mln settings-clr"><span
                                 class="over5">关于我们</span></a>
-                        <a href="/static/pages/index/contact.jsp" class="inline-border standart-button-style settings-clr"><span
+                        <a href="/jsp/index/contact.jsp" class="inline-border standart-button-style settings-clr"><span
                                 class="over5">联系我们</span></a>
                     </div>
                 </div> <!-- end of our team -->
@@ -268,11 +283,11 @@
                 <!-- HERE START RECENT BLOG -->
                 <div class="threecol">
                     <h1 class="title-line blue"><span class="current-bg pr5 settings-text">更新日志</span></h1>
-                    <c:forEach items="${zhang}" var="chapter" varStatus="i" end="2" begin="0">
+                    <c:forEach items="${zhang.list}" var="chapter" varStatus="i" end="2" begin="0">
                     <div class="blog-entry">
                         <div class="blog-excerpt">
-                            <h2><a href="/static/getSingle?comicid=${chapter.comicid}&cnumber=${chapter.cnumber}">${chapter.comicname}第${chapter.cnumber}话：${chapter.cname}</a></h2>
-                            <p class="mytext-p2">更新时间:${chapter.ctime} </p>
+                            <h2><a href="/getSingle?comicid=${chapter.comicsid}&cnumber=${chapter.chapternum}">${chapter.chaptername}</a></h2>
+                            <p class="mytext-p2">更新时间:<fmt:formatDate value="${chapter.uploadtime}" pattern="yyyy-MM-dd"></fmt:formatDate> </p>
                         </div>
                     </div>
                     <span class="dotted-line">&nbsp;</span>
