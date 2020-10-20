@@ -66,4 +66,17 @@ public class UserServiceImpl implements UserService {
         int i = userMapper.updateByPrimaryKeySelective(user);
         return i;
     }
+
+    @Override
+    public List<User> selectByusernameAnduserstatus(String loginaccount, Integer userstatus, Integer pageNum, Integer pageSize) {
+        UserExample example = new UserExample();
+        UserExample.Criteria criteria = example.createCriteria();
+        if (loginaccount.equals(" ") == false) {
+            criteria.andLoginaccountEqualTo(loginaccount);
+        }
+        criteria.andUserstatusEqualTo(userstatus);
+        PageHelper.startPage(pageNum, pageSize);
+        List<User> users = userMapper.selectByExample(example);
+        return users;
+    }
 }

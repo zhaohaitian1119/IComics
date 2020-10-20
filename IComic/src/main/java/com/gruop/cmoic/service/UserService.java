@@ -20,4 +20,8 @@ public interface UserService {
 
     //封号
     int upduserstatus(User user);
+
+
+    //查询封号用户的信息
+    List<User> selectByusernameAnduserstatus(String loginaccount, Integer userstatus, Integer pageNum, Integer pageSize);
 }

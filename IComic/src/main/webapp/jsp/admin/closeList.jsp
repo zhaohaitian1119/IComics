@@ -64,7 +64,7 @@
         <form class="form-inline" method="get" action="/closeList">
             <div class="form-group">
                 <label for="">用户账号</label>
-                <input type="text" class="form-control" id="" value="" name="loginname">
+                <input type="text" class="form-control" id="" value="${loginaccount}" name="loginaccount">
             </div>
             <button type="submit" class="btn btn-primary">查询</button>
         </form>
@@ -90,7 +90,7 @@
             <td>${i.count+(list.pageNum-1)*5}</td>
             <td>${user.username }</td>
             <td>${user.loginaccount}</td>
-            <td>$<%--{user.password }--%>******</td>
+            <td><%--{user.password }--%>******</td>
             <td>${user.phonenum}</td>
             <td>${user.email}</td>
             <td>${user.sex}</td>

@@ -115,15 +115,14 @@ public class UserController {
      *跳转封号页面
      * */
     @RequestMapping("/closeList")
-    public String closeList(@RequestParam(value = "username", required = false, defaultValue = "") String username,
-                            @RequestParam(value = "loginname", required = false, defaultValue = "") String loginaccount,
-                            @RequestParam(value = "gender", required = false, defaultValue = "") String sex,
+    public String closeList(@RequestParam(value = "loginaccount", required = false, defaultValue = " ") String loginaccount,
+                            @RequestParam(value = "userstatus", required = false, defaultValue = "0") Integer userstatus,
                             @RequestParam(value = "pageNum", required = false, defaultValue = "1") Integer pageNum, Model model) {
         Integer pageSize = 5;
-        List<User> users = userService.selectByusernameAndloginaccountAndsex(username, loginaccount, sex, pageNum, pageSize);
+        List<User> users = userService.selectByusernameAnduserstatus(loginaccount, userstatus, pageNum, pageSize);
         PageInfo<User> pageInfo = new PageInfo<>(users);
         model.addAttribute("list", pageInfo);
-        model.addAttribute("loginname", loginaccount);
+        model.addAttribute("loginaccount", loginaccount);
         return "/admin/closeList";
     }
 
