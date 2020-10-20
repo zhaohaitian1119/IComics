@@ -35,7 +35,7 @@ public class CommentController {
 
     //根据漫画id查询
     @RequestMapping("/static/commentListByComicId")
-    public String commentListByComicId(Integer comicid,Model model, HttpServletRequest request){
+    public String commentListByComicId(Integer comicid, Model model, HttpServletRequest request){
         int Num=1;
         String pn=request.getParameter("pn");
         if(pn!=null){
@@ -55,4 +55,6 @@ public class CommentController {
         int del = commentListServicecx.del(id);
         return "redirect:/static/commentList";
     }
+
+
 }

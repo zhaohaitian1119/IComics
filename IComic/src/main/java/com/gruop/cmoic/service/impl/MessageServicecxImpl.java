@@ -26,6 +26,7 @@ public class MessageServicecxImpl implements MessageServicecx{
         return informationMapper.selectByExample(null);
     }
 
+
     @Override
     public int del(int id) {
         return informationMapper.deleteByPrimaryKey(id);

@@ -1,5 +1,7 @@
 package com.gruop.cmoic.pojo;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class News {
@@ -10,7 +12,7 @@ public class News {
     private Integer newsid;
 
     private String comments;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date commenttime;
 
     public Integer getId() {

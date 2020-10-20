@@ -1,5 +1,7 @@
 package com.gruop.cmoic.pojo;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class Chapter {
@@ -10,10 +12,20 @@ public class Chapter {
     private Integer chapternum;
 
     private String chaptername;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date uploadtime;
 
     private String chaptercontentaddress;
+
+    private Comic comic;
+
+    public Comic getComic() {
+        return comic;
+    }
+
+    public void setComic(Comic comic) {
+        this.comic = comic;
+    }
 
     public Integer getId() {
         return id;

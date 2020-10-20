@@ -33,6 +33,11 @@ public class CommentListServicecxImpl implements CommentListServicecx {
     }
 
     @Override
+    public List<News> select() {
+        return newsMapper.selectByExample(null);
+    }
+
+    @Override
     public int del(int id) {
         return newsMapper.deleteByPrimaryKey(id);
     }

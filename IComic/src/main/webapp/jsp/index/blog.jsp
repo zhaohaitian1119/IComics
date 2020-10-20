@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -57,10 +58,10 @@
                     <div class="com-data"></div>
                 </div>
                 <div class="grid article-content w775">
-                    <p><a class="thumb-blog" href="/static/getSingle?comicid=${chapter.comicid}&cnumber=${chapter.cnumber}"><span>&nbsp;</span><img class="inline-border" src="/pic/${chapter.comic.photopath}" style="width: 575px;height: 310px;"/></a></p>
-                    <h2 class="blog-title">${chapter.comic.comicname}第${chapter.cnumber}话:${chapter.cname}</h2>
-                    <h2 class="blog-title">更新时间:${chapter.ctime}</h2>
-                    <p class="blog-more"><a href="/static/getDetail?id=${chapter.comicid}" class="standart-button-style inline-border mln settings-clr"><span class="over5">查看更多</span></a></p>
+                    <p><a class="thumb-blog" href="/static/getSingle?comicsid=${chapter.comicsid}&chapternum=${chapter.chapternum}"><span>&nbsp;</span><img class="inline-border" src="${chapter.comic.photopath}" style="width: 575px;height: 310px;"/></a></p>
+                    <h2 class="blog-title">${chapter.comic.comicname}第${chapter.chapternum}话:${chapter.chaptername}</h2>
+                    <h2 class="blog-title">更新时间:${chapter.uploadtime}</h2>
+                    <p class="blog-more"><a href="/static/getDetail?id=${chapter.comicsid}" class="standart-button-style inline-border mln settings-clr"><span class="over5">查看更多</span></a></p>
                 </div>
                 <div class="clear"></div>
                 <span class="dotted-line">&nbsp;</span>
@@ -136,8 +137,8 @@
                                                                     style="font-size:20px">最新评论</span></h1>
                 <c:forEach items="${commentList}" var="comment" begin="0" end="4" varStatus="i">
                 <div class="tweet">
-                    <p><a href="#">@用户${i.count}:</a> ${comment.message}</p>
-                    <p class="tweet-hour blue">${comment.ctime}</p>
+                    <p><a href="#">@用户${i.count}:</a> ${comment.comments}</p>
+                    <p class="tweet-hour blue"><fmt:formatDate value="${comment.commenttime}" pattern="yyyy-MM-dd"></fmt:formatDate></p>
                 </div>
                 </c:forEach>
             </div>
