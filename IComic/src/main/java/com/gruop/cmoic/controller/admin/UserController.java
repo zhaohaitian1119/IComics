@@ -54,7 +54,7 @@ public class UserController {
             return "2";//登录账号已存在
         }
         user.setRegistrationtime(new Date());
-        user.setAvataraddress("1.png");
+        user.setAvataraddress("/static/images/userphotopath/1.png");
         user.setUserstatus(1);
         int i = userService.addUser(user);
         System.out.println(i);

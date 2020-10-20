@@ -10,13 +10,15 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="keywords" content="GFX, design" />
-    <meta name="description" content="GFX Design" />
+    <meta name="keywords" content="GFX, design"/>
+    <meta name="description" content="GFX Design"/>
     <title>IComic漫画网</title>
-    <link rel="shortcut icon"	href="/pic/userPath/1.png">
-    <link rel="stylesheet" href="/static/css/reset.css" />
-    <link rel="stylesheet" href="/static/css/style.css" />`
-    <link rel="stylesheet" href="/static/css/myportfolio.css" />`
+    <link rel="shortcut icon" href="/pic/userPath/1.png">
+    <link rel="stylesheet" href="/static/css/reset.css"/>
+    <link rel="stylesheet" href="/static/css/style.css"/>
+    `
+    <link rel="stylesheet" href="/static/css/myportfolio.css"/>
+    `
     <link rel="stylesheet" href="/static/css/bootstrap.css">
     <link rel="stylesheet" href="/static/css/mycss.css">
     <!-- <script type="text/javascript" src="js/jquery.min.js"></script> -->
@@ -39,7 +41,7 @@
         <h1 class="over5">漫画列表</h1>
         <div class="intro-description over5">
             <p>我们的网站收录了大量的精品漫画</p>
-            <p>穿越、玄幻、都市、冒险、仙侠等~  &emsp;总有一款适合你</p>
+            <p>穿越、玄幻、都市、冒险、仙侠等~ &emsp;总有一款适合你</p>
         </div>
     </div>
 </div>
@@ -70,8 +72,9 @@
                     <dd><a href="/static/protfolio1?comiclistid=15">古风</a></dd>
                     <dd><a href="/static/protfolio1?comiclistid=16">后宫</a></dd>
 
-                </dl></div>
-            <br />
+                </dl>
+            </div>
+            <br/>
             <div class="pro-search">
                 <dl class="field-list">
                     <dt>地&nbsp;&nbsp;区:</dt>
@@ -79,15 +82,18 @@
                     <dd><a href="/static/protfolio?area=国漫">国漫</a></dd>
                     <dd><a href="/static/protfolio?area=日漫">日漫</a></dd>
                     <dd><a href="/static/protfolio?area=欧美">欧美</a></dd>
-                </dl></div>
-            <br />
+                </dl>
+            </div>
+            <br/>
             <div class="pro-search">
                 <dl class="field-list">
                     <dt>进&nbsp;&nbsp;度:</dt>
                     <dd><a class="active1" href="/static/protfolio">全部</a></dd>
                     <dd><a href="/static/protfolio?ccode=连载">连载</a></dd>
                     <dd><a href="/static/protfolio?ccode=完结">完结</a></dd>
-                </dl></div><br />
+                </dl>
+            </div>
+            <br/>
         </div>
     </div>
     <div class="space30"></div>
@@ -96,17 +102,18 @@
     <div class="space"></div>
     <div class="projects-band-nohidden">
         <ul class="book-item">
-            <c:forEach items="${comicList}" var="comic"  begin="0" end="9">
-            <li><a href="/static/getDetail?id=${comic.id}" class="inline-border"><img src="/pic/${comic.photopath}" alt="" width="200"
-                                                       height="225" /></a>
-                <div class="info">
-                    <a href="#" class="description center">
-                        <h4 class="title mytext-title">${comic.comicname}</h4>
-                    </a>
-                    <p class="author center mytext-p">【${comic.author}】</p>
-                    <p class="type center mytext-p">${comic.comicListsString}</p>
-                </div>
-            </li>
+            <c:forEach items="${comicList}" var="comic" begin="0" end="9">
+                <li><a href="/getDetail?id=${comic.id}" class="inline-border"><img src="${comic.photopath}"
+                                                                                   alt="" width="200"
+                                                                                   height="225"/></a>
+                    <div class="info">
+                        <a href="#" class="description center">
+                            <h4 class="title mytext-title">${comic.comicname}</h4>
+                        </a>
+                        <p class="author center mytext-p">【${comic.author}】</p>
+                            <%-- <p class="type center mytext-p">${comic.comicListsString}</p>--%>
+                    </div>
+                </li>
             </c:forEach>
         </ul>
     </div>
@@ -165,14 +172,14 @@
 
             <div class="footer_image">
                 <img class="inline-border active" src="/static/images/slider/footer_home.jpg" alt="" width="450"
-                     height="250" />
-                <img class="inline-border" src="/static/images/slider/footer_2.jpg" alt="" width="450" height="250" />
-                <img class="inline-border" src="/static/images/slider/footer_3.jpg" alt="" width="450" height="250" />
-                <img class="inline-border" src="/static/images/slider/footer_4.jpg" alt="" width="450" height="250" />
-                <img class="inline-border" src="/static/images/slider/footer_5.jpg" alt="" width="450" height="250" />
-                <img class="inline-border" src="/static/images/slider/footer_6.jpg" alt="" width="450" height="250" />
-                <img class="inline-border" src="/static/images/slider/footer_7.jpg" alt="" width="450" height="250" />
-                <img class="inline-border" src="/static/images/slider/footer_8.jpg" alt="" width="450" height="250" />
+                     height="250"/>
+                <img class="inline-border" src="/static/images/slider/footer_2.jpg" alt="" width="450" height="250"/>
+                <img class="inline-border" src="/static/images/slider/footer_3.jpg" alt="" width="450" height="250"/>
+                <img class="inline-border" src="/static/images/slider/footer_4.jpg" alt="" width="450" height="250"/>
+                <img class="inline-border" src="/static/images/slider/footer_5.jpg" alt="" width="450" height="250"/>
+                <img class="inline-border" src="/static/images/slider/footer_6.jpg" alt="" width="450" height="250"/>
+                <img class="inline-border" src="/static/images/slider/footer_7.jpg" alt="" width="450" height="250"/>
+                <img class="inline-border" src="/static/images/slider/footer_8.jpg" alt="" width="450" height="250"/>
 
                 <ul class="social-icons">
                     <li class="vimeo-social"><a href="#">&nbsp;</a></li>

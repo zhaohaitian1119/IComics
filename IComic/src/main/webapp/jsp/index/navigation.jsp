@@ -1,9 +1,9 @@
 <%--<%@ page import="com.entity.User" %>&lt;%&ndash;--%>
-  <%--Created by IntelliJ IDEA.--%>
-  <%--User: 17270--%>
-  <%--Date: 2019/8/29--%>
-  <%--Time: 14:55--%>
-  <%--To change this template use File | Settings | File Templates.--%>
+<%--Created by IntelliJ IDEA.--%>
+<%--User: 17270--%>
+<%--Date: 2019/8/29--%>
+<%--Time: 14:55--%>
+<%--To change this template use File | Settings | File Templates.--%>
 <%--&ndash;%&gt;--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -11,15 +11,15 @@
 <head>
     <meta charset="UTF-8">
     <title>IComic漫画网</title>
-    <link rel="shortcut icon"	href="/pic/userPath/1.png">
-    <meta name="keywords" content="GFX, design" />
-    <meta name="description" content="GFX Design" />
-    <link rel="stylesheet" href="/static/css/reset.css" />
-    <link rel="stylesheet" href="/static/css/style.css" />
+    <link rel="shortcut icon" href="/pic/userPath/1.png">
+    <meta name="keywords" content="GFX, design"/>
+    <meta name="description" content="GFX Design"/>
+    <link rel="stylesheet" href="/static/css/reset.css"/>
+    <link rel="stylesheet" href="/static/css/style.css"/>
     <link rel="stylesheet" href="/static/css/bootstrap.css">
     <link rel="stylesheet" href="/static/css/mycss.css">
     <link type="text/css" rel="stylesheet" href="/static/css/style.css">
-    <link rel="stylesheet" type="text/css" href="/static/css/lunbo/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/lunbo/normalize.css"/>
     <link rel="stylesheet" type="text/css" href="/static/css/lunbo/demo.css">
     <link rel="stylesheet" href="/static/css/lunbo/style.css">
     <!-- <script type="text/javascript" src="js/jquery.min.js"></script> -->
@@ -63,13 +63,15 @@
 
                 for (var i = 0; i < n; i++) {
                     images[i].style.padding = gap + 'px';
-                }for (i = 1; i < n; i++) {
+                }
+                for (i = 1; i < n; i++) {
                     images[i].style.transformOrigin = '50% 50% ' + -apothem + 'px';
                     images[i].style.transform = 'rotateY(' + i * theta + 'rad)';
                 }
                 if (bfc) for (i = 0; i < n; i++) {
                     images[i].style.backfaceVisibility = 'hidden';
-                }rotateCarousel(currImage);
+                }
+                rotateCarousel(currImage);
             }
 
             function setupNavigation() {
@@ -107,7 +109,7 @@
                 <li>
                     <form class="search" action="/static/getComicByLikeName">
                         <div class="form-group">
-                            <input type="text" name="comicname" class="form-control" placeholder="搜索漫画" >
+                            <input type="text" name="comicname" class="form-control" placeholder="搜索漫画">
                         </div>
                     </form>
                 </li>
@@ -118,25 +120,29 @@
                 <li><a href="/static/pages/index/contact.jsp" class="settings-txt">联系我们</a></li>
             </ul>
             <%--<%--%>
-                <%--boolean flag=false;--%>
-                <%--User user=(User) request.getSession().getAttribute("userSession");--%>
-                <%--if (user!=null){--%>
-                    <%--flag=true;--%>
-                <%--}--%>
-                <%--request.setAttribute("flag",flag);--%>
+            <%--boolean flag=false;--%>
+            <%--User user=(User) request.getSession().getAttribute("userSession");--%>
+            <%--if (user!=null){--%>
+            <%--flag=true;--%>
+            <%--}--%>
+            <%--request.setAttribute("flag",flag);--%>
             <%--%>--%>
         </div>
-        <c:if test="${!requestScope.flag}" var="flag" scope="request">
-        <div id="login_user"  ><button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#login">注册/登录</button></div>
+        <c:if test="${user==null}">
+            <div id="login_user">
+                <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#login">注册/登录</button>
+            </div>
         </c:if>
-        <c:if test="${!flag}" var="flag" scope="request">
-        <div class="login_success" id="login_user1">
-            <a href="/static/pages/index/personal-info.jsp">
-                <div style="float: left;"><img src="/pic/userPath/${userSession.photoPath}"  style="border-radius: 50%;width: 60px;height: 60px;"/></div>
-                <div style="float: left;padding-top: 7px;padding-left: 5px;"><span class="leve">欢迎您，</span><p class="name">${userSession.username}</p></div>
-            </a>
-            <div style="padding-left:140px;padding-top:15px;font-size:20px;"><a onclick="fun2()">退出</a></div>
-        </div>
+        <c:if test="${user!=null}">
+            <div class="login_success" id="login_user1">
+                <a href="/jsp/index/personal-info.jsp">
+                    <div style="float: left;"><img src="${user.avataraddress}"
+                                                   style="border-radius: 50%;width: 60px;height: 60px;"/></div>
+                    <div style="float: left;padding-top: 7px;padding-left: 5px;"><span class="leve">欢迎您，</span>
+                        <p class="name">${user.username}</p></div>
+                </a>
+                <div style="padding-left:140px;padding-top:15px;font-size:20px;"><a onclick="fun2()">退出</a></div>
+            </div>
         </c:if>
     </div>
 </div>
@@ -165,13 +171,14 @@
             <div class="tab-content">
                 <div role="tabpanel" class="tab-pane active" id="home">
                     <div class="modal-body">
+                        <p id="error">${error}</p>
                         <form class="form-horizontal" id="user_form" method="post"
                               action="/static/userLogin">
                             <div class="form-group">
                                 <label for="loginName" class="col-sm-2 control-label">账号</label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" id="loginName" placeholder="账号"
-                                           name="loginname">
+                                           name="loginaccount">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -187,8 +194,8 @@
                                     <input type="text" class="form-control" id="login_code" placeholder="验证码"
                                            name="codes">
                                     <div class="code" style="float: right">
-                                       <img src="/checkCode" onclick="changeCode()" id="checkCodeImg"/>
-												<a href="javascript:changeCode()" >看不清换一张</a><br>
+                                        <img src="/checkCode" onclick="changeCode()" id="checkCodeImg"/>
+                                        <a href="javascript:changeCode()">看不清换一张</a><br>
                                     </div>
                                 </div>
                             </div>
@@ -208,7 +215,7 @@
                                 <label for="register_loginName" class="col-sm-2 control-label">账号</label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" id="register_loginName"
-                                           placeholder="账号" name="loginname">
+                                           placeholder="账号" name="loginaccount">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -228,7 +235,8 @@
                             <div class="form-group">
                                 <label for="register_gender" class="col-sm-2 control-label">性别</label>
                                 <div class="col-sm-8">
-                                    <select id="register_gender" name="gender" style="width: 370px;border-radius: 34px;height: 34px;font-size: 14px;padding-left: 10px;color: #999999;">
+                                    <select id="register_gender" name="sex"
+                                            style="width: 370px;border-radius: 34px;height: 34px;font-size: 14px;padding-left: 10px;color: #999999;">
                                         <option value="男">男</option>
                                         <option value="女">女</option>
                                     </select>
@@ -245,7 +253,7 @@
                                 <label for="register_telephone" class="col-sm-2 control-label">电话</label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" id="register_telephone"
-                                           placeholder="电话" name="telephone">
+                                           placeholder="电话" name="phonenum">
                                 </div>
                             </div>
                             <input type="submit" value="" id="doRegister" style="display: none">
@@ -267,42 +275,45 @@
             charset='gb2312'></script>
     <script>
         function register() {
-            $.post("/static/addUser",
+            $.post("/addUser",
                 $("#register_user_form").serialize(),
                 function (data) {
-                    if(data =="ok"){
+                    if (data == "1") {
                         alert("用户注册成功！");
                         window.location.reload();
-                    }else if (data=="reset"){
+                    } else if (data == "2") {
                         alert("该账号已存在，请重新输入！")
-                    }else{
+                    } else {
                         alert("用户注册失败！");
                     }
                 });
         }
+
         function userLogin() {
             $.post("/static/userLogin",
-            $("#user_form").serialize(),
-            function (data) {
-                if(data =="ok"){
-                    alert("用户登录成功！");
-                    window.location.reload();
-                }else if (data =="key") {
-                    alert("验证码错误！");
-                }else if(data =="close"){
-                    alert("用户已被封号！");
-                }else{
-                    alert("用户登录失败！");
-                }
-            });
+                $("#user_form").serialize(),
+                function (data) {
+                    if (data == "4") {
+                        alert("用户登录成功！");
+                        window.location.reload();
+                    } else if (data == "5") {
+                        alert("验证码错误！");
+                    } else if (data == "6") {
+                        alert("用户已被封号！");
+                    } else {
+                        alert("用户登录失败！");
+                    }
+                });
         }
-        function fun2(){
+
+        function fun2() {
             $.post("/static/exitUser");
             window.location.reload();
         }
+
         function changeCode() {
             $.post("${pageContext.request.contextPath}/checkCode");
-            $("#checkCodeImg").attr("src","${pageContext.request.contextPath}/checkCode");
+            $("#checkCodeImg").attr("src", "${pageContext.request.contextPath}/checkCode");
         }
     </script>
 </div>
