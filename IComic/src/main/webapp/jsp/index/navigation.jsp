@@ -101,7 +101,7 @@
 <div class="elastic">
     <!-- 头部 -->
     <div id="header" class="grid-clear">
-        <div class="grid" id="logo"><a href="/static/index" class="settings-text">IComic漫画网</a></div>
+        <div class="grid" id="logo"><a href="/index" class="settings-text">IComic漫画网</a></div>
         <div class="grid main-menu-block">
             <ul id="main-menu">
                 <li>
@@ -111,11 +111,11 @@
                         </div>
                     </form>
                 </li>
-                <li><a href="/static/index" class="settings-txt">首页</a></li>
+                <li><a href="/" class="settings-txt">首页</a></li>
                 <li><a href="/static/protfolio" class="settings-txt">分类</a></li>
                 <li><a href="/static/getUpdateChapter" class="settings-txt">最近更新</a></li>
-                <li><a href="/static/pages/index/about.jsp" class="settings-txt">说明</a></li>
-                <li><a href="/static/pages/index/contact.jsp" class="settings-txt">联系我们</a></li>
+                <li><a href="/jsp/index/about.jsp" class="settings-txt">说明</a></li>
+                <li><a href="/jsp/index/contact.jsp" class="settings-txt">联系我们</a></li>
             </ul>
             <%--<%--%>
                 <%--boolean flag=false;--%>

@@ -17,6 +17,16 @@ public class Chapter {
 
     private String chaptercontentaddress;
 
+    private String comicsname;
+
+    public String getComicsname() {
+        return comicsname;
+    }
+
+    public void setComicsname(String comicsname) {
+        this.comicsname = comicsname;
+    }
+
     public Integer getId() {
         return id;
     }

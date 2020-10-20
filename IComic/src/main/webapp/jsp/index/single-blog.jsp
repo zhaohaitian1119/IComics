@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: 17270
@@ -54,12 +55,12 @@
     <div class="bg_wood_page circle-inline-border"></div>
     <div class="elastic inline-border settings-clr no-second" id="page_header">
         <!--漫画名-->
-        <h1 class="over5">${chapter.comic.comicname}</h1>
+        <h1 class="over5">${chapter.comicsname}</h1>
         <div class="intro-description over5">
             <!--章节-->
-            <p class="mytext-title">第${chapter.cnumber}话:${chapter.cname}</p>
+            <p class="mytext-title">${chapter.chaptername}</p>
             <!--简述-->
-            <p>更新时间:${chapter.ctime}</p>
+            <p>更新时间:<fmt:formatDate value="${chapter.uploadtime}" pattern="yyyy-MM-dd"></fmt:formatDate></p>
         </div>
     </div>
 </div>
@@ -126,8 +127,8 @@
             </form>
             <div class="contact-form">
                 <form  method="post">
-                    <input type="hidden" name="userid" value="${userSession.id}">
-                    <input type="hidden" name="comicid" value="${chapter.comic.id}">
+                    <input type="hidden" name="userid" value="<%--${userSession.id}--%>">
+                    <input type="hidden" name="comicid" value="${chapter.comicsid}">
                     <div class="block-form">
 								<textarea name="message" id="message" cols="30" rows="10"
                                           placeholder="评论..."></textarea>

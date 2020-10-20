@@ -32,4 +32,8 @@ public interface ComicMapper {
     int getHeats();
 
     List<Comic> getComicSByOther(Comic comic);
+
+    List<Comic> selectOrderHeatasc();
+
+    List<Comic> selectOrderHeatdesc();
 }

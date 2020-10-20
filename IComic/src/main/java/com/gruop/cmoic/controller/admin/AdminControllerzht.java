@@ -34,6 +34,7 @@ public class AdminControllerzht {
     @Resource
     AdminServicezht adminService;
 
+    //动态查询后台首页数据
     @RequestMapping("/adminIndex")
     public String adminIndex(Model model){
         int countAdmin = adminService.countAdmin();
@@ -58,6 +59,7 @@ public class AdminControllerzht {
         return "/admin/home";
     }
 
+    //查询漫画详细信息 按时间排序
     @RequestMapping("/getComics")
     public String getComics(Model model, @RequestParam(value = "pn",defaultValue = "1")Integer pn){
         PageHelper.startPage(pn,5);
@@ -66,6 +68,7 @@ public class AdminControllerzht {
         model.addAttribute("comicList",pageInfo);
         return "/admin/comicList";
     }
+    //根据 名称 地区 作者 连载状态查询
     @RequestMapping("/getComicSByOther")
     public String getComicSByOther(Comic comic,Model model,@RequestParam(value = "pn",defaultValue = "1")Integer pn){
         PageHelper.startPage(pn,5);
@@ -74,7 +77,7 @@ public class AdminControllerzht {
         model.addAttribute("comicList",pageInfo);
         return "admin/comicList";
     }
-
+    //添加漫画信息
     @RequestMapping("/addComic")
     public String addChapter(MultipartFile file, Comic comic, HttpServletRequest request){
         //获取原文件名
@@ -129,6 +132,7 @@ public class AdminControllerzht {
         }
     }
 
+    //根据漫画id查询章节信息
     @RequestMapping("/chapterList")
     public String chapterList(Integer comicid,Model model,@RequestParam(value = "pn",defaultValue = "1")Integer pn,HttpSession session){
         PageHelper.startPage(pn,5);
@@ -140,6 +144,7 @@ public class AdminControllerzht {
         return "/admin/chapterList";
     }
 
+    //根据章节数模糊查询漫画
     @RequestMapping("/getChapterByNumber")
     public String getChapterByNumber(HttpServletRequest request,Model model){
         String cnumber = request.getParameter("cnumber");
@@ -154,12 +159,14 @@ public class AdminControllerzht {
         return "/admin/chapterList";
     }
 
+    //跳转到添加新章节页面
     @RequestMapping("/tz")
     public String tz(Integer comicid){
         System.out.println(comicid);
         return "/admin/addChapter";
     }
 
+    //添加新章节
     @RequestMapping("/addChapter")
     public String addChapter(MultipartFile file, Chapter chapter, HttpServletRequest request){
         //获取原文件名
@@ -196,6 +203,7 @@ public class AdminControllerzht {
 
     }
 
+    //根据章节id删除
     @RequestMapping("/deleteChapterById")
     @ResponseBody
     public boolean deleteChapterById(int id){

@@ -1,4 +1,4 @@
-package com.gruop.cmoic.controller;
+package com.gruop.cmoic.controller.admin;
 
 import com.gruop.cmoic.pojo.Admin;
 import com.gruop.cmoic.service.AdminService;
