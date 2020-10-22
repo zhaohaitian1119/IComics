@@ -105,11 +105,11 @@
 <div class="col-md-12 text-right">
     <nav>
         <ul class="pagination">
-            <li><a href="/static/closeList?pn=1">首页 </a></li>
-            <li><a href="/static/closeList?pn=${list.pageNum-1}">上一页 </a></li>
+            <li><a href="/closeList?pn=1">首页 </a></li>
+            <li><a href="/closeList?pn=${list.pageNum-1}">上一页 </a></li>
             <li><a href="#">${list.pageNum}</a></li>
-            <li><a href="/static/closeList?pn=${list.pageNum+1}">下一页</a></li>
-            <li><a href="/static/closeList?pn=${list.pages}">尾页</a></li>
+            <li><a href="/closeList?pn=${list.pageNum+1}">下一页</a></li>
+            <li><a href="/closeList?pn=${list.pages}">尾页</a></li>
         </ul>
     </nav>
 </div>
